@@ -58,7 +58,7 @@ namespace Game1
             level.addTexture(whitePath);
             level.addTexture(redPath);
 
-            Texture2D enemyTexture = Content.Load<Texture2D>("enemy");
+            Texture2D enemyTexture = Content.Load<Texture2D>("enemy2");
             enemy = new enemyModel(enemyTexture, Vector2.Zero, 100, 10, 2.5f);
             enemy.setWaypoints(level.Waypoints);
 
