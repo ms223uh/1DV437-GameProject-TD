@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Model
 {
-    class Level
+    class levelModel
     {
 
         private List<Texture2D> tileTexture = new List<Texture2D>();
 
 
-        public Level()
+        public levelModel()
         {
 
         }

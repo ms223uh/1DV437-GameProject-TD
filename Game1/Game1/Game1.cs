@@ -12,7 +12,7 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Level level = new Level();
+        levelModel level = new levelModel();
 
 
         public Game1()
@@ -57,7 +57,7 @@ namespace Game1
             level.addTexture(path);
             level.addTexture(whitePath);
             level.addTexture(redPath);
-            
+
 
             // TODO: use this.Content to load your game content here
         }
