@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game1.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -11,11 +12,19 @@ namespace Game1
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Level level = new Level();
+
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferHeight = level.Height * 85;
+            graphics.PreferredBackBufferWidth = level.Width * 85;
+
+            graphics.ApplyChanges();
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -39,6 +48,16 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            Texture2D grass = Content.Load<Texture2D>("grass");
+            Texture2D path = Content.Load<Texture2D>("path");
+            Texture2D redPath = Content.Load<Texture2D>("redPath");
+            Texture2D whitePath = Content.Load<Texture2D>("whitePath");
+            level.addTexture(grass);
+            level.addTexture(path);
+            level.addTexture(whitePath);
+            level.addTexture(redPath);
+            
 
             // TODO: use this.Content to load your game content here
         }
@@ -75,7 +94,9 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            level.Draw(spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
