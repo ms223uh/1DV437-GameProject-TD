@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.View
 {
-    class camera
+    public class camera
     {
 
         protected Texture2D texture;
@@ -51,9 +51,9 @@ namespace Game1.View
         }
 
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(texture, center, null, Color.White,
+            spriteBatch.Draw(texture, center, null, color,
                              rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
 

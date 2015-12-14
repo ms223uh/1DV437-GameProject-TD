@@ -13,7 +13,7 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
-
+        enemyModel enemy;
 
         public Game1()
         {
@@ -58,6 +58,10 @@ namespace Game1
             level.addTexture(whitePath);
             level.addTexture(redPath);
 
+            Texture2D enemyTexture = Content.Load<Texture2D>("enemy");
+            enemy = new enemyModel(enemyTexture, Vector2.Zero, 100, 10, 2.5f);
+            enemy.setWaypoints(level.Waypoints);
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -81,7 +85,8 @@ namespace Game1
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            
+            enemy.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -96,6 +101,7 @@ namespace Game1
 
             spriteBatch.Begin();
             level.Draw(spriteBatch);
+            enemy.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);
