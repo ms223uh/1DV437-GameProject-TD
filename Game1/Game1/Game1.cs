@@ -14,7 +14,7 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
-        enemyModel enemy;
+        enemyModel enemy1;
         towerModel tower;
 
         public Game1()
@@ -61,8 +61,8 @@ namespace Game1
             level.addTexture(redPath);
 
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy2");
-            enemy = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 0.5f);
-            enemy.setWaypoints(level.Waypoints);
+            enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 0.5f);
+            enemy1.setWaypoints(level.Waypoints);
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower1");
             tower = new towerModel(towerTexture, Vector2.Zero);
@@ -91,14 +91,14 @@ namespace Game1
                 Exit();
 
             
-            enemy.Update(gameTime);
+            enemy1.Update(gameTime);
 
 
             if (tower.Target == null)
             {
                 List<enemyModel> enemies = new List<enemyModel>();
 
-                enemies.Add(enemy);
+                enemies.Add(enemy1);
                 tower.getTheClosestTarget(enemies);
             }
             tower.Update(gameTime);
@@ -116,7 +116,7 @@ namespace Game1
 
             spriteBatch.Begin();
             level.Draw(spriteBatch);
-            enemy.Draw(spriteBatch);
+            enemy1.Draw(spriteBatch);
             tower.Draw(spriteBatch, Color.White);
             spriteBatch.End();
 
