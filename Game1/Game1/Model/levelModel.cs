@@ -53,6 +53,18 @@ namespace Game1.Model
         };
 
 
+        public int getIndex(int cellX, int cellY)
+        {
+            if (cellX < 0 || cellX > Width - 1 || cellY < 0 || cellY > Height - 1)
+            {
+                return 0;
+            }
+
+            return map[cellX, cellY];
+        }
+
+
+
         public void addTexture(Texture2D texture)
         {
             tileTexture.Add(texture);
@@ -67,6 +79,7 @@ namespace Game1.Model
         {
             get { return map.GetLength(0); }
         }
+
 
 
         public void Draw(SpriteBatch spriteBatch)

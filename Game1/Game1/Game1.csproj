@@ -41,6 +41,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Model\enemyModel.cs" />
     <Compile Include="Model\levelModel.cs" />
+    <Compile Include="Model\playerModel.cs" />
     <Compile Include="Model\towerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

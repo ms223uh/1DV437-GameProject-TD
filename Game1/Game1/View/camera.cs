@@ -18,11 +18,11 @@ namespace Game1.View
         protected Vector2 origin;
         protected float rotation;
 
-        public camera(Texture2D _texture, Vector2 _position)
+        public camera(Texture2D Texture, Vector2 Position)
         {
 
-            texture = _texture;
-            position = _position;
+            texture = Texture;
+            position = Position;
             velocity = Vector2.Zero;
 
             center = new Vector2(position.X + texture.Width / 2,
@@ -38,6 +38,15 @@ namespace Game1.View
             get
             {
                 return center;
+            }
+        }
+
+
+        public Vector2 Position
+        {
+            get
+            {
+                return position;
             }
         }
 
