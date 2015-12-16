@@ -85,7 +85,7 @@ namespace Game1.Model
 
         private bool isCellClear()
         {
-            bool inBounds = cellX >= -1 && cellY >= -1 && cellX < level.Width && cellY < level.Height;
+            bool inBounds = cellX >= 0 && cellY >= 0 && cellX < level.Width && cellY < level.Height;
 
             bool spaceClear = true;
 

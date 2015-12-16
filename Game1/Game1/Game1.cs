@@ -129,9 +129,10 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+            player.Draw(spriteBatch);
             level.Draw(spriteBatch);
             enemy1.Draw(spriteBatch);
-            player.Draw(spriteBatch);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
