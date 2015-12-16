@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace Game1
 {
@@ -91,6 +92,16 @@ namespace Game1
 
             
             enemy.Update(gameTime);
+
+
+            if (tower.Target == null)
+            {
+                List<enemyModel> enemies = new List<enemyModel>();
+
+                enemies.Add(enemy);
+                tower.getTheClosestTarget(enemies);
+            }
+            tower.Update(gameTime);
 
             base.Update(gameTime);
         }
