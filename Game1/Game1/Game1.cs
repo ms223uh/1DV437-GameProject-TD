@@ -14,6 +14,7 @@ namespace Game1
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
         enemyModel enemy;
+        towerModel tower;
 
         public Game1()
         {
@@ -59,8 +60,11 @@ namespace Game1
             level.addTexture(redPath);
 
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy2");
-            enemy = new enemyModel(enemyTexture, Vector2.Zero, 100, 10, 2.5f);
+            enemy = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 0.5f);
             enemy.setWaypoints(level.Waypoints);
+
+            Texture2D towerTexture = Content.Load<Texture2D>("tower1");
+            tower = new towerModel(towerTexture, Vector2.Zero);
 
 
             // TODO: use this.Content to load your game content here
@@ -102,6 +106,7 @@ namespace Game1
             spriteBatch.Begin();
             level.Draw(spriteBatch);
             enemy.Draw(spriteBatch);
+            tower.Draw(spriteBatch, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
