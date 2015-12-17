@@ -20,13 +20,12 @@ namespace Game1.View
 
         public camera(Texture2D Texture, Vector2 Position)
         {
-
             texture = Texture;
             position = Position;
             velocity = Vector2.Zero;
 
             center = new Vector2(position.X + texture.Width / 2,
-                                 position.Y + texture.Height / 2 );
+                                 position.Y + texture.Height / 2);
 
             origin = new Vector2(texture.Width / 2, texture.Height / 2);
 

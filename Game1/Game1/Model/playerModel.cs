@@ -22,6 +22,8 @@ namespace Game1.Model
         private MouseState mouseState;
         private MouseState oldState;
 
+        private Viewport vp;
+
 
         public int Money
         {
@@ -34,8 +36,9 @@ namespace Game1.Model
         }
 
 
-        public playerModel(levelModel level, Texture2D towerTexture)
+        public playerModel(levelModel level, Texture2D towerTexture, Viewport vp)
         {
+            this.vp = vp;
             this.level = level;
             this.towerTexture = towerTexture;
         }
@@ -52,13 +55,16 @@ namespace Game1.Model
         {
             mouseState = Mouse.GetState();
 
-            cellX = (int)(mouseState.X / 85);
-            cellY = (int)(mouseState.Y / 85);
+            float x = (float)mouseState.X / Game1.WindowObject.ClientBounds.Width;
+            float y = (float)mouseState.Y / Game1.WindowObject.ClientBounds.Height;
+
+            cellX = (int)(x * level.Width);
+            cellY = (int)(y * level.Height);
             tileX = cellX * 85;
             tileY = cellY * 85;
 
 
-            if(mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
+            if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {
                 if (isCellClear())
                 {
@@ -97,7 +103,7 @@ namespace Game1.Model
                     break;
             }
 
-            bool onPath = (level.getIndex(cellX, cellY) != 1);
+            bool onPath = (level.getIndex(cellX, cellY) == 0);
 
             return inBounds && spaceClear && onPath;
         }

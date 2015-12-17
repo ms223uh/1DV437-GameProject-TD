@@ -55,12 +55,22 @@ namespace Game1.Model
 
         public int getIndex(int cellX, int cellY)
         {
-            if (cellX < 0 || cellX > Width - 1 || cellY < 0 || cellY > Height - 1)
+            if (cellX < 0 || cellX > Width  -1 || cellY < 0 || cellY > Height -1)
             {
                 return 0;
             }
 
-            return map[cellX, cellY];
+            return map[cellY, cellX];
+        }
+
+        public void setIndex(int cellX, int cellY, int index)
+        {
+            if (cellX < 0 || cellX > Width - 1 || cellY < 0 || cellY > Height - 1)
+            {
+                return;
+            }
+
+            map[cellY, cellX] = index;
         }
 
 
@@ -91,7 +101,7 @@ namespace Game1.Model
                     int textureIndex = map[y, x];
                     if (textureIndex == -1)
                         continue;
-
+                    
                     Texture2D texture = tileTexture[textureIndex];
                     spriteBatch.Draw(texture, new Rectangle(
                         x * 85, y * 85, 85, 85), Color.White);

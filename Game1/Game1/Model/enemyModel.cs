@@ -91,7 +91,7 @@ namespace Game1.Model
         }
 
 
-        public  void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             if (alive)
             {

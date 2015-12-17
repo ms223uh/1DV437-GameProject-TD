@@ -50,7 +50,7 @@ namespace Game1.Model
 
         public bool isInRange(Vector2 position)
         {
-            if(Vector2.Distance(center, position) <= attackRadius)
+            if (Vector2.Distance(center, position) <= attackRadius)
             {
                 return true;
             }
@@ -60,8 +60,8 @@ namespace Game1.Model
 
         public void Draw(SpriteBatch spriteBatch)
         {
-                
-                base.Draw(spriteBatch);
+
+            base.Draw(spriteBatch);
         }
 
 
@@ -71,7 +71,7 @@ namespace Game1.Model
 
             float smallestRange = attackRadius;
 
-            foreach(enemyModel enemy in enemies)
+            foreach (enemyModel enemy in enemies)
             {
                 if (Vector2.Distance(center, enemy.Center) < smallestRange)
                 {
@@ -87,7 +87,7 @@ namespace Game1.Model
             Vector2 direction = center - target.Center;
             direction.Normalize();
 
-            rotation = (float)Math.Atan2(-direction.X, direction.Y);
+          rotation = (float)Math.Atan2(-direction.X, direction.Y);
         }
 
 
@@ -99,8 +99,7 @@ namespace Game1.Model
                 faceTarget();
         }
 
-        
-    }
 
     }
 
+}

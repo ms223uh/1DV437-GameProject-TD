@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace Game1
@@ -15,19 +16,24 @@ namespace Game1
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
         enemyModel enemy1;
-       // towerModel tower;
+        // towerModel tower;
         playerModel player;
+
+        public static GameWindow WindowObject;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            //6graphics.IsFullScreen = true;
 
             graphics.PreferredBackBufferHeight = level.Height * 85;
             graphics.PreferredBackBufferWidth = level.Width * 85;
 
             graphics.ApplyChanges();
             IsMouseVisible = true;
+
+
         }
 
         /// <summary>
@@ -39,7 +45,10 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            Game1.WindowObject = Window;
+            Mouse.WindowHandle = Window.Handle;
+            Window.Position = Window.Position + new Point(0, 1);
+            Window.Position = Window.Position - new Point(0, 1);
             base.Initialize();
         }
 
@@ -67,7 +76,7 @@ namespace Game1
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower1");
             //tower = new towerModel(towerTexture, Vector2.Zero);
-            player = new playerModel(level, towerTexture);
+            player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport);
 
 
             // TODO: use this.Content to load your game content here
