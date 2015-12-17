@@ -87,7 +87,7 @@ namespace Game1.Model
             Vector2 direction = center - target.Center;
             direction.Normalize();
 
-          rotation = (float)Math.Atan2(-direction.X, direction.Y);
+         // rotation = (float)Math.Atan2(-direction.X, direction.Y);
         }
 
 

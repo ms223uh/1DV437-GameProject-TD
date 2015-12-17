@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
@@ -27,8 +28,8 @@ namespace Game1
             Content.RootDirectory = "Content";
             //6graphics.IsFullScreen = true;
 
-            graphics.PreferredBackBufferHeight = level.Height * 85;
-            graphics.PreferredBackBufferWidth = level.Width * 85;
+            graphics.PreferredBackBufferHeight = level.Height * 60;
+            graphics.PreferredBackBufferWidth = level.Width * 60;
 
             graphics.ApplyChanges();
             IsMouseVisible = true;
@@ -70,13 +71,17 @@ namespace Game1
             level.addTexture(whitePath);
             level.addTexture(redPath);
 
-            Texture2D enemyTexture = Content.Load<Texture2D>("enemy2");
+            Texture2D enemyTexture = Content.Load<Texture2D>("enemy1");
             enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.5f);
             enemy1.setWaypoints(level.Waypoints);
 
-            Texture2D towerTexture = Content.Load<Texture2D>("tower1");
+            Texture2D towerTexture = Content.Load<Texture2D>("tower3");
             //tower = new towerModel(towerTexture, Vector2.Zero);
             player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport);
+
+
+            //Song song = Content.Load<Song>("bgSound2");  // Put the name of your song here instead of "song_title"
+            //MediaPlayer.Play(song);
 
 
             // TODO: use this.Content to load your game content here
@@ -142,7 +147,7 @@ namespace Game1
             level.Draw(spriteBatch);
             enemy1.Draw(spriteBatch);
             player.Draw(spriteBatch);
-
+            
             spriteBatch.End();
 
             base.Draw(gameTime);

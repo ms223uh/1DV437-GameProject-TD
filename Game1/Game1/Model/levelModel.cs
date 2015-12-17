@@ -16,17 +16,17 @@ namespace Game1.Model
 
         public levelModel()
         {
-            waypoints.Enqueue(new Vector2(0, 1) * 85);
-            waypoints.Enqueue(new Vector2(1, 1) * 85);
-            waypoints.Enqueue(new Vector2(10, 1) * 85);
-            waypoints.Enqueue(new Vector2(10, 3) * 85);
-            waypoints.Enqueue(new Vector2(3, 3) * 85);
-            waypoints.Enqueue(new Vector2(3, 6) * 85);
-            waypoints.Enqueue(new Vector2(1, 6) * 85);
-            waypoints.Enqueue(new Vector2(1, 8) * 85);
-            waypoints.Enqueue(new Vector2(8, 8) * 85);
-            waypoints.Enqueue(new Vector2(8, 9) * 85);
-            waypoints.Enqueue(new Vector2(12, 9) * 85);
+            waypoints.Enqueue(new Vector2(0, 1) * 60);
+            waypoints.Enqueue(new Vector2(1, 1) * 60);
+            waypoints.Enqueue(new Vector2(10, 1) * 60);
+            waypoints.Enqueue(new Vector2(10, 3) * 60);
+            waypoints.Enqueue(new Vector2(3, 3) * 60);
+            waypoints.Enqueue(new Vector2(3, 6) * 60);
+            waypoints.Enqueue(new Vector2(1, 6) * 60);
+            waypoints.Enqueue(new Vector2(1, 8) * 60);
+            waypoints.Enqueue(new Vector2(8, 8) * 60);
+            waypoints.Enqueue(new Vector2(8, 9) * 60);
+            waypoints.Enqueue(new Vector2(12, 9) * 60);
         }
 
 
@@ -104,7 +104,7 @@ namespace Game1.Model
                     
                     Texture2D texture = tileTexture[textureIndex];
                     spriteBatch.Draw(texture, new Rectangle(
-                        x * 85, y * 85, 85, 85), Color.White);
+                        x * 60, y * 60, 60, 60), Color.White);
                 }
             }
         }

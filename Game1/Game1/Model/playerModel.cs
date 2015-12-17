@@ -60,8 +60,8 @@ namespace Game1.Model
 
             cellX = (int)(x * level.Width);
             cellY = (int)(y * level.Height);
-            tileX = cellX * 85;
-            tileY = cellY * 85;
+            tileX = cellX * 60;
+            tileY = cellY * 60;
 
 
             if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
