@@ -17,7 +17,7 @@ namespace Game1.Tower
         {
             this.attackDamage = 15;
             this.cost = 10;
-            this.attackRadius = 100;
+            this.attackRadius = 1000;
         }
 
         public override void Update(GameTime gameTime)
@@ -28,13 +28,13 @@ namespace Game1.Tower
             {
                 bulletModel bullet = new bulletModel(bulletTexture, Vector2.Subtract(center,
                     new Vector2(bulletTexture.Width / 2)), rotation, 6, attackDamage);
+
+
+
+                bulletList.Add(bullet);
+                bulletTimer = 0;
+
             }
-
-            
-            bulletList.Add(bullet);
-            bulletTimer = 0;
-
-
             for (int i = 0; i < bulletList.Count; i++)
             {
                 bulletModel bullet = bulletList[i];
