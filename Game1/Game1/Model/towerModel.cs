@@ -15,6 +15,9 @@ namespace Game1.Model
         protected int cost;
         protected int attackDamage;
         protected float attackRadius;
+        protected Texture2D bulletTexture;
+        protected float bulletTimer;
+        protected List<bulletModel> bulletList = new List<bulletModel>();  
 
 
 
@@ -42,24 +45,26 @@ namespace Game1.Model
 
 
 
-        public towerModel(Texture2D texture, Vector2 position) : base(texture, position)
+        public towerModel(Texture2D texture, Texture2D bulletTexture ,Vector2 position) : base(texture, position)
         {
-            attackRadius = 1000;
+            this.bulletTexture = bulletTexture;
         }
 
 
         public bool isInRange(Vector2 position)
         {
-            if (Vector2.Distance(center, position) <= attackRadius)
-            {
-                return true;
-            }
-            return false;
+            return Vector2.Distance(center, position) <= attackRadius;
         }
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
+
+            foreach(bulletModel bullet in bulletList)
+            {
+                bullet.Draw(spriteBatch);
+            }
+
 
             base.Draw(spriteBatch);
         }
@@ -95,9 +100,18 @@ namespace Game1.Model
         {
             base.Update(gameTime);
 
+            bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (target != null)
                 faceTarget();
+
+            if (!isInRange(target.Center))
+            {
+                target = null;
+                bulletTimer = 0;
+            }
         }
+
 
 
     }

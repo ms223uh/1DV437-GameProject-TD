@@ -72,12 +72,15 @@ namespace Game1
             level.addTexture(redPath);
 
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy1");
-            enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.5f);
+            enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
             enemy1.setWaypoints(level.Waypoints);
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower3");
+
+            Texture2D bulletTexture = Content.Load<Texture2D>("bullet");
+
             //tower = new towerModel(towerTexture, Vector2.Zero);
-            player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport);
+            player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport, bulletTexture);
 
 
             //Song song = Content.Load<Song>("bgSound2");  // Put the name of your song here instead of "song_title"

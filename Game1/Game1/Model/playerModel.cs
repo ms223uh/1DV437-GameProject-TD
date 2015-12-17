@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Game1.Tower;
 
 namespace Game1.Model
 {
@@ -24,6 +25,8 @@ namespace Game1.Model
 
         private Viewport vp;
 
+        private Texture2D bulletTexture;
+
 
         public int Money
         {
@@ -36,11 +39,12 @@ namespace Game1.Model
         }
 
 
-        public playerModel(levelModel level, Texture2D towerTexture, Viewport vp)
+        public playerModel(levelModel level, Texture2D towerTexture, Viewport vp, Texture2D bulletTexture)
         {
             this.vp = vp;
             this.level = level;
             this.towerTexture = towerTexture;
+            this.bulletTexture = bulletTexture;
         }
 
 
@@ -68,7 +72,9 @@ namespace Game1.Model
             {
                 if (isCellClear())
                 {
-                    towerModel tower = new towerModel(towerTexture, new Vector2(tileX, tileY));
+                    ashTower tower = new ashTower(towerTexture,
+                        bulletTexture, new Vector2(tileX, tileY));
+
                     towers.Add(tower);
                 }
             }
