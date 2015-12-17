@@ -60,12 +60,12 @@ namespace Game1.Model
 
         public void Draw(SpriteBatch spriteBatch)
         {
-                Color color = new Color();
-                base.Draw(spriteBatch, color);
+                
+                base.Draw(spriteBatch);
         }
 
 
-        public void getTheClosestTarget(LinkedList<enemyModel> enemies)
+        public void getTheClosestTarget(List<enemyModel> enemies)
         {
             target = null;
 
@@ -99,10 +99,7 @@ namespace Game1.Model
                 faceTarget();
         }
 
-        internal void getTheClosestTarget(List<enemyModel> enemies)
-        {
-            
-        }
+        
     }
 
     }

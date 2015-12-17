@@ -15,7 +15,7 @@ namespace Game1
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
         enemyModel enemy1;
-        towerModel tower;
+       // towerModel tower;
         playerModel player;
 
         public Game1()
@@ -129,10 +129,11 @@ namespace Game1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            player.Draw(spriteBatch);
+
             level.Draw(spriteBatch);
             enemy1.Draw(spriteBatch);
-            
+            player.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

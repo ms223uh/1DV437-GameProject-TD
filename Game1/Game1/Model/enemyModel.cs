@@ -100,7 +100,7 @@ namespace Game1.Model
                 Color color = new Color(new Vector3(3 - healthPercentage,
                     3 - healthPercentage, 3 - healthPercentage));
 
-                base.Draw(spriteBatch, color);
+                base.Draw(spriteBatch);
             }
 
 

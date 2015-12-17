@@ -60,9 +60,9 @@ namespace Game1.View
         }
 
 
-        public virtual void Draw(SpriteBatch spriteBatch, Color color)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, center, null, color,
+            spriteBatch.Draw(texture, center, null, Color.White,
                              rotation, origin, 1.0f, SpriteEffects.None, 0);
         }
 
