@@ -86,11 +86,11 @@ namespace Game1
             player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport, bulletTexture);
 
 
-            //Song song = Content.Load<Song>("bgSound3");  // Put the name of your song here instead of "song_title"
-            //MediaPlayer.Volume =  0.1f;
-            //MediaPlayer.Play(song);
-            
-            
+            Song song = Content.Load<Song>("bgSound3");  // Put the name of your song here instead of "song_title"
+            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.Play(song);
+
+
 
 
             // TODO: use this.Content to load your game content here

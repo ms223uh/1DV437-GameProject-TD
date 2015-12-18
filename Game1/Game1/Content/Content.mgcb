@@ -13,18 +13,6 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin bgSound.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:bgSound.wav
-
-#begin bgSound2.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:bgSound2.mp3
-
 #begin bgSound3.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
