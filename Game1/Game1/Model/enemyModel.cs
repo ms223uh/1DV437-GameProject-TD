@@ -97,11 +97,13 @@ namespace Game1.Model
             {
                 float healthPercentage = (float)currentHealth / (float)startHealth;
 
-                Color color = new Color(new Vector3(3 - healthPercentage,
-                    3 - healthPercentage, 3 - healthPercentage));
+                Color color = new Color(new Vector3(1 - healthPercentage,
+                    1 - healthPercentage, 1 - healthPercentage));
 
                 base.Draw(spriteBatch);
             }
+            
+
 
 
         }

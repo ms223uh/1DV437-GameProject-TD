@@ -15,9 +15,9 @@ namespace Game1.Tower
         public ashTower(Texture2D texture, Texture2D bulletTexture, Vector2 position) 
             : base (texture, bulletTexture, position)
         {
-            this.attackDamage = 15;
+            this.attackDamage = 10;
             this.cost = 10;
-            this.attackRadius = 1000;
+            this.attackRadius = 100;
         }
 
         public override void Update(GameTime gameTime)
@@ -29,12 +29,10 @@ namespace Game1.Tower
                 bulletModel bullet = new bulletModel(bulletTexture, Vector2.Subtract(center,
                     new Vector2(bulletTexture.Width / 2)), rotation, 6, attackDamage);
 
-
-
                 bulletList.Add(bullet);
                 bulletTimer = 0;
-
             }
+
             for (int i = 0; i < bulletList.Count; i++)
             {
                 bulletModel bullet = bulletList[i];
@@ -42,15 +40,19 @@ namespace Game1.Tower
                 bullet.setRotation(rotation);
                 bullet.Update(gameTime);
 
-                if (!isInRange (bullet.Center))
-                {
+                if (!isInRange(bullet.Center))
                     bullet.Kill();
 
-                    if (bullet.isDead())
-                    {
-                        bulletList.Remove(bullet);
-                        i--;
-                    }
+                if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
+                {
+                    target.CurrentHealth -= bullet.Damage;
+                    bullet.Kill();
+                }
+
+                if (bullet.isDead())
+                {
+                    bulletList.Remove(bullet);
+                    i--;
                 }
             }
         }

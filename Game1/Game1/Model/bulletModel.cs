@@ -38,7 +38,7 @@ namespace Game1.Model
 
         public void Kill()
         {
-            this.age = 200;
+            this.age = 150;
         }
 
         public override void Update(GameTime gameTime)

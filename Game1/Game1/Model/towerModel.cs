@@ -53,7 +53,10 @@ namespace Game1.Model
 
         public bool isInRange(Vector2 position)
         {
-            return Vector2.Distance(center, position) <= attackRadius;
+            if (Vector2.Distance(center, position) <= attackRadius)
+                return true;
+
+            return false;
         }
 
 
@@ -92,7 +95,7 @@ namespace Game1.Model
             Vector2 direction = center - target.Center;
             direction.Normalize();
 
-         // rotation = (float)Math.Atan2(-direction.X, direction.Y);
+         rotation = (float)Math.Atan2(-direction.X, direction.Y);
         }
 
 
@@ -103,12 +106,15 @@ namespace Game1.Model
             bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (target != null)
+            {
                 faceTarget();
 
-            if (!isInRange(target.Center))
-            {
-                target = null;
-                bulletTimer = 0;
+                if (!isInRange(target.Center) || target.IsDead)
+                {
+                    
+                    target = null;
+                    bulletTimer = 0;
+                }
             }
         }
 
