@@ -19,6 +19,7 @@ namespace Game1
         enemyModel enemy1;
         // towerModel tower;
         playerModel player;
+        waveModel wave;
 
         public static GameWindow WindowObject;
 
@@ -72,8 +73,10 @@ namespace Game1
             level.addTexture(redPath);
 
             Texture2D enemyTexture = Content.Load<Texture2D>("enemy1");
-            enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
-            enemy1.setWaypoints(level.Waypoints);
+            //enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
+            //enemy1.setWaypoints(level.Waypoints);
+            wave = new waveModel(0, 20, level, enemyTexture);
+            wave.Start();
 
             Texture2D towerTexture = Content.Load<Texture2D>("tower3");
 
@@ -125,12 +128,14 @@ namespace Game1
             //base.Update(gameTime);
 
 
-            enemy1.Update(gameTime);
+            //enemy1.Update(gameTime);
 
-            List<enemyModel> enemies = new List<enemyModel>();
-            enemies.Add(enemy1);
+            //List<enemyModel> enemies = new List<enemyModel>();
+            //enemies.Add(enemy1);
 
-            player.Update(gameTime, enemies);
+            wave.Update(gameTime);
+
+            player.Update(gameTime, wave.Enemies);
 
             base.Update(gameTime);
 
@@ -148,7 +153,10 @@ namespace Game1
             spriteBatch.Begin();
 
             level.Draw(spriteBatch);
-            enemy1.Draw(spriteBatch);
+            //enemy1.Draw(spriteBatch);
+
+            wave.Draw(spriteBatch);
+
             player.Draw(spriteBatch);
             
             spriteBatch.End();

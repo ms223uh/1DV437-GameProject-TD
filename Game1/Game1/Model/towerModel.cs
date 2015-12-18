@@ -107,6 +107,7 @@ namespace Game1.Model
 
             if (target != null)
             {
+                if (!target.IsDead) 
                 faceTarget();
 
                 if (!isInRange(target.Center) || target.IsDead)
