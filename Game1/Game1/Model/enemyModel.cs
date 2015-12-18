@@ -14,7 +14,7 @@ namespace Game1.Model
         protected float startHealth;
         protected float currentHealth;
         protected bool alive = true;
-        protected float speed = 0.5f;
+        protected float speed = 2.5f;
         protected int bountyGiven;
 
 

@@ -87,7 +87,7 @@ namespace Game1.Model
             if (spawningEnemies)
             {
                 spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (spawnTimer > 1) // time between enemies
+                if (spawnTimer > 1.0f) // time between enemies
                 {
                     AddEnemy();
                 }
