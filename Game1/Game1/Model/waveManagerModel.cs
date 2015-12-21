@@ -16,14 +16,14 @@ namespace Game1.Model
         private bool waveFinished = false;
         private Texture2D enemyTexture;
 
-        private List<waveModel> waves = new List<waveModel>();
-        int currentWaveIndex;
+        private Queue<waveModel> waves = new Queue<waveModel>();
+        
         private levelModel level;
 
 
         public waveModel CurrentWave
         {
-            get { return waves[currentWaveIndex];}
+            get { return waves.Peek();}
         }
 
         public List<enemyModel> Enemies
@@ -33,7 +33,7 @@ namespace Game1.Model
 
         public int Round
         {
-            get { return CurrentWave.RoundNumber + 2; }
+            get { return CurrentWave.RoundNumber + 1; }
         }
 
 
@@ -51,61 +51,56 @@ namespace Game1.Model
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     level, enemyTexture);
 
-                waves.Add(wave);
+                waves.Enqueue(wave);
+                StartNextWave();
             }
 
-            StartNextWave();
+            
         }
 
 
         private void StartNextWave()
         {
-            if (currentWaveIndex < waves.Count) 
+            if (waves.Count > 0) 
             {
-                waves[currentWaveIndex].Start(); 
+                waves.Peek().Start(); 
 
                 timeSinceLastWave = 0; 
                 waveFinished = false;
             }
+            
         }
 
 
         public void Update(GameTime gameTime)
         {
-            for (int i = 0; i <= currentWaveIndex; i++)
-            {
-                if (waves[i].RoundOver == false)
-                    waves[i].Update(gameTime);
-            }
+            CurrentWave.Update(gameTime); 
 
-            if (CurrentWave.RoundOver)
+            if (CurrentWave.RoundOver) 
             {
                 waveFinished = true;
             }
 
-            if (waveFinished)
+            if (waveFinished) 
             {
-                timeSinceLastWave = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds; 
             }
 
-            if (timeSinceLastWave > 5.0f)
+            if (timeSinceLastWave > 2.0f) 
             {
-                currentWaveIndex += 1;
+                waves.Dequeue(); 
                 StartNextWave(); 
-
             }
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            for (int i = 0; i <= currentWaveIndex; i++)
-            {
-                if (waves[i].RoundOver == false)
-                    waves[i].Draw(spriteBatch);
-}
+            CurrentWave.Draw(spriteBatch);
+        }
+
         }
 
 
     }
-}
+

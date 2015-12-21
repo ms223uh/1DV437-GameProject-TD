@@ -70,17 +70,6 @@ namespace Game1.Model
 
             enemiesHasSpawned++;
 
-
-            if (waveNumber == 2)
-            {
-                float speed = 2.0f;
-
-
-                enemy = new enemyModel(enemyTexture,
-                    level.Waypoints.Peek(), 50, 1, speed);
-                enemy.setWaypoints(level.Waypoints);
-            }
-
         }
 
         public void Start()

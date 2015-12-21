@@ -33,6 +33,8 @@ namespace Game1.Model
         public bool IsDead
         {
             get { return currentHealth <= 0; }
+
+          //  get { return !alive; }
         }
 
         public int BountyGiven
