@@ -8,11 +8,11 @@ using Game1.Model;
 
 namespace Game1.Tower
 {
-    public class ashTower : towerModel
+    public class basicTower : towerModel
     {
 
 
-        public ashTower(Texture2D texture, Texture2D bulletTexture, Vector2 position) 
+        public basicTower(Texture2D texture, Texture2D bulletTexture, Vector2 position) 
             : base (texture, bulletTexture, position)
         {
             this.attackDamage = 10;

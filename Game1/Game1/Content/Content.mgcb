@@ -13,9 +13,3 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin bgSound3.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
-/build:bgSound3.mp3
-

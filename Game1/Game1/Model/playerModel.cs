@@ -72,7 +72,7 @@ namespace Game1.Model
             {
                 if (isCellClear())
                 {
-                    ashTower tower = new ashTower(towerTexture,
+                    basicTower tower = new basicTower(towerTexture,
                         bulletTexture, new Vector2(tileX, tileY));
 
                     towers.Add(tower);
