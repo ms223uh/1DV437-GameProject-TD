@@ -63,12 +63,24 @@ namespace Game1.Model
         private void AddEnemy()
         {
             enemyModel enemy = new enemyModel(enemyTexture,
-            level.Waypoints.Peek(), 100, 1, 0.5f);
+            level.Waypoints.Peek(), 100, 2, 0.5f);
             enemy.setWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
 
             enemiesHasSpawned++;
+
+
+            if (waveNumber == 2)
+            {
+                float speed = 2.0f;
+
+
+                enemy = new enemyModel(enemyTexture,
+                    level.Waypoints.Peek(), 50, 1, speed);
+                enemy.setWaypoints(level.Waypoints);
+            }
+
         }
 
         public void Start()

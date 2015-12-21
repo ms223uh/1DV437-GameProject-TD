@@ -19,7 +19,8 @@ namespace Game1
         enemyModel enemy1;
         // towerModel tower;
         playerModel player;
-        waveModel wave;
+        // waveModel wave;
+        waveManagerModel waveManager;
 
         public static GameWindow WindowObject;
 
@@ -75,8 +76,11 @@ namespace Game1
             Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
             //enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
             //enemy1.setWaypoints(level.Waypoints);
-            wave = new waveModel(0, 100, level, enemyTexture);
-            wave.Start();
+            //wave = new waveModel(0, 100, level, enemyTexture);
+            //wave.Start();
+
+            waveManager = new waveManagerModel(level, 24, enemyTexture);
+
 
             Texture2D towerTexture = Content.Load<Texture2D>("basicTower");
 
@@ -134,9 +138,9 @@ namespace Game1
             //List<enemyModel> enemies = new List<enemyModel>();
             //enemies.Add(enemy1);
 
-            wave.Update(gameTime);
+            waveManager.Update(gameTime);
 
-            player.Update(gameTime, wave.Enemies);
+            player.Update(gameTime, waveManager.Enemies);
 
             base.Update(gameTime);
 
@@ -156,7 +160,7 @@ namespace Game1
             level.Draw(spriteBatch);
             //enemy1.Draw(spriteBatch);
 
-            wave.Draw(spriteBatch);
+            waveManager.Draw(spriteBatch);
 
             player.Draw(spriteBatch);
             
