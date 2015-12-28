@@ -46,10 +46,16 @@ namespace Game1.Model
             for (int i = 0; i < numberOfWaves; i++)
             {
                 int initialNumberOfEnemies = 6;
-                int numberModifier = (i / 6) + 1;
+                int numberModifier = (i / 2) + 1;
 
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     level, enemyTexture);
+
+                if (i == 2)
+                {
+                    waveModel wave2 = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    level, enemyTexture);
+                }
 
                 waves.Enqueue(wave);
                 StartNextWave();

@@ -78,6 +78,10 @@ namespace Game1
             level.addTexture(redPath);
 
             Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
+            Texture2D enemyTexture2 = Content.Load<Texture2D>("zombie2");
+
+
+
             //enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
             //enemy1.setWaypoints(level.Waypoints);
             //wave = new waveModel(0, 100, level, enemyTexture);
