@@ -1,4 +1,5 @@
-﻿using Game1.Model;
+﻿using Game1.GUI;
+using Game1.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -21,6 +22,7 @@ namespace Game1
         playerModel player;
         // waveModel wave;
         waveManagerModel waveManager;
+        Toolbar toolbar;
 
         public static GameWindow WindowObject;
 
@@ -90,7 +92,9 @@ namespace Game1
             player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport, bulletTexture);
 
 
-            
+            Texture2D topBar = Content.Load<Texture2D>("toolBar");
+            SpriteFont font = Content.Load<SpriteFont>("Arial");
+            toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 55));
 
 
 
@@ -163,7 +167,9 @@ namespace Game1
             waveManager.Draw(spriteBatch);
 
             player.Draw(spriteBatch);
-            
+
+            toolbar.Draw(spriteBatch, player, waveManager);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
