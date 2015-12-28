@@ -73,7 +73,7 @@ namespace Game1.Model
         }
 
 
-        public void getTheClosestTarget(List<enemyModel> enemies)
+        public virtual void getTheClosestTarget(List<enemyModel> enemies)
         {
             target = null;
 
@@ -98,6 +98,11 @@ namespace Game1.Model
          rotation = (float)Math.Atan2(-direction.X, direction.Y);
         }
 
+
+        public virtual bool HasTarget
+        {
+            get { return target != null; }
+        }
 
         public override void Update(GameTime gameTime)
         {

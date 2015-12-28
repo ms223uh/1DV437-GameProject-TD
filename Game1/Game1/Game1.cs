@@ -23,6 +23,8 @@ namespace Game1
         // waveModel wave;
         waveManagerModel waveManager;
         Toolbar toolbar;
+        Button basicButton;
+        Button speedButton;
 
         public static GameWindow WindowObject;
 
@@ -84,22 +86,46 @@ namespace Game1
             waveManager = new waveManagerModel(level, 24, enemyTexture);
 
 
-            Texture2D towerTexture = Content.Load<Texture2D>("basicTower");
+            
 
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet1");
 
+            Texture2D[] towerTextures = new Texture2D[]
+            {
+            Content.Load<Texture2D>("basicTower"),
+            Content.Load<Texture2D>("speedTower")
+            };
+
             //tower = new towerModel(towerTexture, Vector2.Zero);
-            player = new playerModel(level, towerTexture, graphics.GraphicsDevice.Viewport, bulletTexture);
+            player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
 
 
             Texture2D topBar = Content.Load<Texture2D>("toolBar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");
-            toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 55));
+            toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 0));
 
+            Texture2D basicNormal = Content.Load<Texture2D>("GUI\\basicTowerGUINormal");
+            Texture2D basicHover = Content.Load<Texture2D>("GUI\\basicTowerGUIHover");
+            Texture2D basicPressed = Content.Load<Texture2D>("GUI\\basicTowerGUIPressed");
+            basicButton = new Button(basicNormal, basicHover, basicPressed, new Vector2(0, level.Height * 57));
+            basicButton.Clicked += new EventHandler(basicButton_Clicked);
 
+            Texture2D speedNormal = Content.Load<Texture2D>("GUI\\speedTowerGUINormal");
+            Texture2D speedHover = Content.Load<Texture2D>("GUI\\speedTowerGUIHover");
+            Texture2D speedPressed = Content.Load<Texture2D>("GUI\\speedTowerGUIPressed");
+            speedButton = new Button(speedNormal, speedHover, speedPressed, new Vector2(32, level.Height * 57));
+            speedButton.Clicked += new EventHandler(speedButton_Clicked);
 
+        }
 
-            // TODO: use this.Content to load your game content here
+        private void basicButton_Clicked(object sender, EventArgs e)
+        {
+            player.NewTowerType = "basicTower";
+        }
+
+        private void speedButton_Clicked(object sender, EventArgs e)
+        {
+            player.NewTowerType = "speedTower";
         }
 
         /// <summary>
@@ -146,6 +172,9 @@ namespace Game1
 
             player.Update(gameTime, waveManager.Enemies);
 
+            basicButton.Update(gameTime);
+            speedButton.Update(gameTime);
+
             base.Update(gameTime);
 
 
@@ -169,6 +198,10 @@ namespace Game1
             player.Draw(spriteBatch);
 
             toolbar.Draw(spriteBatch, player, waveManager);
+
+            basicButton.Draw(spriteBatch);
+            speedButton.Draw(spriteBatch);
+
 
             spriteBatch.End();
 

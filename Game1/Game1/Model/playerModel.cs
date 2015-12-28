@@ -16,7 +16,7 @@ namespace Game1.Model
         private int money = 50;
         private int lives = 30;
 
-        private Texture2D towerTexture;
+        private Texture2D[] towerTexture;
 
         private List<towerModel> towers = new List<towerModel>();
 
@@ -26,6 +26,8 @@ namespace Game1.Model
         private Viewport vp;
 
         private Texture2D bulletTexture;
+
+        private string newTowerType;
 
 
         public int Money
@@ -39,7 +41,7 @@ namespace Game1.Model
         }
 
 
-        public playerModel(levelModel level, Texture2D towerTexture, Viewport vp, Texture2D bulletTexture)
+        public playerModel(levelModel level, Texture2D[] towerTexture, Viewport vp, Texture2D bulletTexture)
         {
             this.vp = vp;
             this.level = level;
@@ -70,19 +72,16 @@ namespace Game1.Model
 
             if (mouseState.LeftButton == ButtonState.Released && oldState.LeftButton == ButtonState.Pressed)
             {
-                if (isCellClear())
+                if (string.IsNullOrEmpty(newTowerType) == false)
                 {
-                    basicTower tower = new basicTower(towerTexture,
-                        bulletTexture, new Vector2(tileX, tileY));
-
-                    towers.Add(tower);
+                    AddTower();
                 }
             }
 
 
             foreach (towerModel tower in towers)
             {
-                if (tower.Target == null)
+                if (tower.HasTarget == false)
                 {
                     tower.getTheClosestTarget(enemies);
                 }
@@ -123,5 +122,43 @@ namespace Game1.Model
             }
         }
 
+
+        public string NewTowerType
+        {
+            set { newTowerType = value; }
+        }
+
+        public void AddTower()
+        {
+            towerModel towerToAdd = null;
+
+            switch (newTowerType)
+            {
+                case "basicTower":
+                    {
+                        towerToAdd = new basicTower(towerTexture[0], 
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+                case "speedTower":
+                    {
+                        towerToAdd = new speedTower(towerTexture[1],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+            }
+
+            if (isCellClear() == true && towerToAdd.Cost <= money)
+            {
+                towers.Add(towerToAdd);
+                money -= towerToAdd.Cost;
+
+                
+                newTowerType = string.Empty;
+            }
+        }
+
+
     }
-}
+
+    }

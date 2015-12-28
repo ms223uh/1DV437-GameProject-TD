@@ -35,6 +35,15 @@ namespace Game1.Model
             this.speed = speed;
         }
 
+        public bulletModel(Texture2D texture, Vector2 position, Vector2 velocity, int speed, int damage)
+               : base(texture, position)
+        {
+            this.rotation = rotation;
+            this.damage = damage;
+            this.speed = speed;
+            this.velocity = velocity * speed;
+        }
+
 
         public void Kill()
         {
