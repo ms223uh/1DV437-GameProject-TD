@@ -34,8 +34,8 @@ namespace Game1.GUI
 
             spriteBatch.Draw(texture, position, Color.White);
 
-            string text = string.Format("Gold: {0} Lives: {1}  Wave: {2}", player.Money, player.Lives, waveManager.Round);
-            spriteBatch.DrawString(spriteFont, text, textPosition, Color.WhiteSmoke);
+            string text = string.Format("Gold: {0} Lives: {1} Wave: {2}", player.Money, player.Lives, waveManager.Round);
+            spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
 
         }
 

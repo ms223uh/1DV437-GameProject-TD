@@ -154,6 +154,12 @@ namespace Game1.Model
                             bulletTexture, new Vector2(tileX, tileY));
                         break;
                     }
+                case "bomberTower":
+                    {
+                        towerToAdd = new bomberTower(towerTexture[3],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
             }
 
             if (isCellClear() == true && towerToAdd.Cost <= money)

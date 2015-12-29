@@ -19,9 +19,9 @@ namespace Game1.Tower
         {
             this.speedModifier = 0.5f;
             this.modifierDuration = 2.0f;
-            this.attackDamage = 10;
-            this.cost = 10;
-            this.attackRadius = 100;
+            this.attackDamage = 8;
+            this.cost = 15;
+            this.attackRadius = 180;
         }
 
         public override void Update(GameTime gameTime)

@@ -51,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tower\basicTower.cs" />
+    <Compile Include="Tower\bomberTower.cs" />
     <Compile Include="Tower\slowTower.cs" />
     <Compile Include="Tower\speedTower.cs" />
     <Compile Include="View\camera.cs" />
@@ -66,34 +67,43 @@
     <Content Include="Content\basicTower.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\blueGrass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bomberTower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bullet1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\basicTowerGUIHover.png">
+    <Content Include="Content\GUI\basicHoverGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\basicTowerGUINormal.png">
+    <Content Include="Content\GUI\basicTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\basicTowerGUIPressed.png">
+    <Content Include="Content\GUI\bomberHoverGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\slowTowerGUIHover.png">
+    <Content Include="Content\GUI\bomberTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\slowTowerGUINormal.png">
+    <Content Include="Content\GUI\pressedButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\slowTowerGUIPressed.png">
+    <Content Include="Content\GUI\slowHoverGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\speedTowerGUIHover.png">
+    <Content Include="Content\GUI\slowTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\speedTowerGUINormal.png">
+    <Content Include="Content\GUI\speedHoverGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\speedTowerGUIPressed.png">
+    <Content Include="Content\GUI\speedTowerGUI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\shadowGrass.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\slowTower.png">
