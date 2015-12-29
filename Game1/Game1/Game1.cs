@@ -76,12 +76,16 @@ namespace Game1
             Texture2D whitePath = Content.Load<Texture2D>("whitePath");
             Texture2D blueGrass = Content.Load<Texture2D>("grass");
             Texture2D shadowGrass = Content.Load<Texture2D>("shadowGrass");
+            Texture2D bushSprite = Content.Load<Texture2D>("bushSprite");
+            Texture2D rockSprite = Content.Load<Texture2D>("rockSprite");
             level.addTexture(grass);
             level.addTexture(path);
             level.addTexture(whitePath);
             level.addTexture(redPath);
             level.addTexture(blueGrass);
             level.addTexture(shadowGrass);
+            level.addTexture(bushSprite);
+            level.addTexture(rockSprite);
 
             //Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
             //Texture2D enemyTexture2 = Content.Load<Texture2D>("zombie2");

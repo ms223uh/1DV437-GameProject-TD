@@ -83,17 +83,17 @@ namespace Game1.Model
 
                 if (i == 17)
                 {
-                    wave = new waveModel(i, 2 * numberModifier,
+                    wave = new waveModel(i, 1 * numberModifier,
                     player, level, enemyTexture[2]);
                 }
 
                 if (i == 21)
                 {
-                    wave = new waveModel(i, 2 * numberModifier,
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[1]);
                 }
 
-                if (i == 24)
+                if (i == 23)
                 {
                     wave = new waveModel(i, 2 * numberModifier,
                     player, level, enemyTexture[2]);
@@ -137,7 +137,7 @@ namespace Game1.Model
                 timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (timeSinceLastWave > 3.5f)
+            if (timeSinceLastWave > 2.5f)
             {
                 
                 waves.Dequeue();

@@ -17,7 +17,7 @@ namespace Game1.Tower
         {
             this.attackDamage = 12;
             this.cost = 25;
-            this.attackRadius = 200;
+            this.attackRadius = 165;
         }
 
         public override void Update(GameTime gameTime)
