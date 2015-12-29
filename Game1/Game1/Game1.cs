@@ -87,7 +87,14 @@ namespace Game1
             //wave = new waveModel(0, 100, level, enemyTexture);
             //wave.Start();
 
-            waveManager = new waveManagerModel(level, 24, enemyTexture);
+            Texture2D[] enemyTextures = new Texture2D[]
+            {
+            Content.Load<Texture2D>("zombie1"),
+            Content.Load<Texture2D>("zombie2")
+            };
+
+
+            waveManager = new waveManagerModel(level, 24, enemyTextures);
 
 
             

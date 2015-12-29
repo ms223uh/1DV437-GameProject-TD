@@ -14,7 +14,7 @@ namespace Game1.Model
         private int numberOfWaves;
         private float timeSinceLastWave;
         private bool waveFinished = false;
-        private Texture2D enemyTexture;
+        private Texture2D[] enemyTexture;
 
         private Queue<waveModel> waves = new Queue<waveModel>();
         
@@ -37,7 +37,7 @@ namespace Game1.Model
         }
 
 
-        public waveManagerModel(levelModel level, int numberOfWaves, Texture2D enemyTexture)
+        public waveManagerModel(levelModel level, int numberOfWaves, Texture2D[] enemyTexture)
         {
             this.numberOfWaves = numberOfWaves;
             this.enemyTexture = enemyTexture;
@@ -46,16 +46,18 @@ namespace Game1.Model
             for (int i = 0; i < numberOfWaves; i++)
             {
                 int initialNumberOfEnemies = 6;
-                int numberModifier = (i / 2) + 1;
+                int numberModifier = (i / 6) + 1;
 
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
-                    level, enemyTexture);
+                    level, enemyTexture[0]);
 
-                if (i == 2)
+                if (i == 1)
                 {
-                    waveModel wave2 = new waveModel(i, initialNumberOfEnemies * numberModifier,
-                    level, enemyTexture);
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    level, enemyTexture[1]);
                 }
+
+
 
                 waves.Enqueue(wave);
                 StartNextWave();

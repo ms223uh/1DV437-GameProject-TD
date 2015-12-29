@@ -68,7 +68,7 @@ namespace Game1.Model
             if (waveNumber == 1)
             {
                 enemy = new enemyModel(enemyTexture,
-                level.Waypoints.Peek(), 50, 1, 2.5f);
+                level.Waypoints.Peek(), 100, 1, 1.0f);
             }
 
             enemy.setWaypoints(level.Waypoints);
