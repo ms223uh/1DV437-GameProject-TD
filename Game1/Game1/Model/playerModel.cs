@@ -146,6 +146,12 @@ namespace Game1.Model
                             bulletTexture, new Vector2(tileX, tileY));
                         break;
                     }
+                case "slowTower":
+                    {
+                        towerToAdd = new slowTower(towerTexture[2],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
             }
 
             if (isCellClear() == true && towerToAdd.Cost <= money)

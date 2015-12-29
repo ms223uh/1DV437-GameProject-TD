@@ -17,7 +17,26 @@ namespace Game1.Model
         protected float speed = 2.5f;
         protected int bountyGiven;
 
+        private float speedModifier;
+        private float modifierDuration;
+        private float modifierCurrentTime;
 
+
+        public float SpeedModifier
+        {
+            get { return speedModifier; }
+            set { speedModifier = value;  }
+        }
+
+        public float ModifierDuration
+        {
+            get { return modifierDuration; }
+            set
+            {
+                modifierDuration = value;
+                modifierCurrentTime = 0;
+            }
+        }
 
         public float DistanceToDestination
         {
@@ -81,10 +100,29 @@ namespace Game1.Model
                     Vector2 direction = waypoints.Peek() - position;
                     direction.Normalize();
 
-                    velocity = Vector2.Multiply(direction, speed);
+                    float temporarySpeed = speed;
+
+
+                    if (modifierCurrentTime > modifierDuration)
+                    {
+
+                        speedModifier = 0;
+                        modifierCurrentTime = 0;
+                    }
+
+                    if (speedModifier != 0 && modifierCurrentTime <= modifierDuration)
+                    {
+
+                        temporarySpeed *= speedModifier;
+
+                        modifierCurrentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    }
+
+                    velocity = Vector2.Multiply(direction, temporarySpeed);
 
                     position += velocity;
                 }
+            
             }
 
             else
@@ -99,8 +137,8 @@ namespace Game1.Model
             {
                 float healthPercentage = (float)currentHealth / (float)startHealth;
 
-                Color color = new Color(new Vector3(1 - healthPercentage,
-                    1 - healthPercentage, 1 - healthPercentage));
+                Color color = new Color(new Vector3(3 - healthPercentage,
+                    3 - healthPercentage, 3 - healthPercentage));
 
                 base.Draw(spriteBatch);
             }

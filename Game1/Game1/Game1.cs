@@ -25,6 +25,7 @@ namespace Game1
         Toolbar toolbar;
         Button basicButton;
         Button speedButton;
+        Button slowButton;
 
         public static GameWindow WindowObject;
 
@@ -77,8 +78,8 @@ namespace Game1
             level.addTexture(whitePath);
             level.addTexture(redPath);
 
-            Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
-            Texture2D enemyTexture2 = Content.Load<Texture2D>("zombie2");
+            //Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
+            //Texture2D enemyTexture2 = Content.Load<Texture2D>("zombie2");
 
 
 
@@ -104,7 +105,8 @@ namespace Game1
             Texture2D[] towerTextures = new Texture2D[]
             {
             Content.Load<Texture2D>("basicTower"),
-            Content.Load<Texture2D>("speedTower")
+            Content.Load<Texture2D>("speedTower"),
+            Content.Load<Texture2D>("slowTower")
             };
 
             //tower = new towerModel(towerTexture, Vector2.Zero);
@@ -127,6 +129,12 @@ namespace Game1
             speedButton = new Button(speedNormal, speedHover, speedPressed, new Vector2(32, level.Height * 57));
             speedButton.Clicked += new EventHandler(speedButton_Clicked);
 
+            Texture2D slowNormal = Content.Load<Texture2D>("GUI\\slowTowerGUINormal");
+            Texture2D slowHover = Content.Load<Texture2D>("GUI\\slowTowerGUIHover");
+            Texture2D slowPressed = Content.Load<Texture2D>("GUI\\slowTowerGUIPressed");
+            slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(64, level.Height * 57));
+            slowButton.Clicked += new EventHandler(slowButton_Clicked);
+
         }
 
         private void basicButton_Clicked(object sender, EventArgs e)
@@ -137,6 +145,11 @@ namespace Game1
         private void speedButton_Clicked(object sender, EventArgs e)
         {
             player.NewTowerType = "speedTower";
+        }
+
+        private void slowButton_Clicked(object sender, EventArgs e)
+        {
+            player.NewTowerType = "slowTower";
         }
 
         /// <summary>
@@ -185,6 +198,7 @@ namespace Game1
 
             basicButton.Update(gameTime);
             speedButton.Update(gameTime);
+            slowButton.Update(gameTime);
 
             base.Update(gameTime);
 
@@ -212,7 +226,7 @@ namespace Game1
 
             basicButton.Draw(spriteBatch);
             speedButton.Draw(spriteBatch);
-
+            slowButton.Draw(spriteBatch);
 
             spriteBatch.End();
 
