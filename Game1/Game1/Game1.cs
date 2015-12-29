@@ -94,12 +94,7 @@ namespace Game1
             Content.Load<Texture2D>("zombie2")
             };
 
-
-            waveManager = new waveManagerModel(level, 24, enemyTextures);
-
-
-
-
+            
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet1");
 
             Texture2D[] towerTextures = new Texture2D[]
@@ -111,7 +106,7 @@ namespace Game1
 
             //tower = new towerModel(towerTexture, Vector2.Zero);
             player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
-
+            waveManager = new waveManagerModel(player, level, 24, enemyTextures);
 
             Texture2D topBar = Content.Load<Texture2D>("toolBar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");

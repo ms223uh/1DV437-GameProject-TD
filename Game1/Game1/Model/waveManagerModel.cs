@@ -39,7 +39,7 @@ namespace Game1.Model
         }
 
 
-        public waveManagerModel(levelModel level, int numberOfWaves, Texture2D[] enemyTexture)
+        public waveManagerModel(playerModel player, levelModel level, int numberOfWaves, Texture2D[] enemyTexture)
         {
             this.numberOfWaves = numberOfWaves;
             this.enemyTexture = enemyTexture;
@@ -51,12 +51,12 @@ namespace Game1.Model
                 int numberModifier = (i / 6) + 1;
 
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
-                    level, enemyTexture[0]);
+                    player, level, enemyTexture[0]);
 
                 if (i == 1)
                 {
                     wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
-                    level, enemyTexture[1]);
+                    player, level, enemyTexture[1]);
                 }
 
                

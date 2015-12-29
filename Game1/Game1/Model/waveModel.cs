@@ -10,6 +10,7 @@ namespace Game1.Model
     class waveModel
     {
 
+        playerModel player;
         private int numberOfEnemies;
         private int waveNumber;
         private float spawnTimer;
@@ -51,11 +52,12 @@ namespace Game1.Model
 
 
 
-        public waveModel(int waveNumber, int numberOfEnemies, levelModel level, Texture2D enemyTexture)
+        public waveModel(int waveNumber, int numberOfEnemies, playerModel player, levelModel level, Texture2D enemyTexture)
         {
 
             this.waveNumber = waveNumber;
             this.numberOfEnemies = numberOfEnemies;
+            this.player = player;
             this.level = level;
             this.enemyTexture = enemyTexture;
 
@@ -117,10 +119,13 @@ namespace Game1.Model
                     if (enemy.CurrentHealth > 0)
                     {
                         enemyAtEnd = true;
-                        
+                        player.Lives -= 1;
+                    }
+                    else
+                    {
+                        player.Money += enemy.BountyGiven;
                     }
 
-                    
 
                     enemies.Remove(enemy);
                     i--;
