@@ -98,7 +98,7 @@ namespace Game1
             waveManager = new waveManagerModel(level, 24, enemyTextures);
 
 
-            
+
 
             Texture2D bulletTexture = Content.Load<Texture2D>("bullet1");
 
@@ -120,19 +120,19 @@ namespace Game1
             Texture2D basicNormal = Content.Load<Texture2D>("GUI\\basicTowerGUINormal");
             Texture2D basicHover = Content.Load<Texture2D>("GUI\\basicTowerGUIHover");
             Texture2D basicPressed = Content.Load<Texture2D>("GUI\\basicTowerGUIPressed");
-            basicButton = new Button(basicNormal, basicHover, basicPressed, new Vector2(0, level.Height * 57));
+            basicButton = new Button(basicNormal, basicHover, basicPressed, new Vector2(2, level.Height * 57));
             basicButton.Clicked += new EventHandler(basicButton_Clicked);
 
             Texture2D speedNormal = Content.Load<Texture2D>("GUI\\speedTowerGUINormal");
             Texture2D speedHover = Content.Load<Texture2D>("GUI\\speedTowerGUIHover");
             Texture2D speedPressed = Content.Load<Texture2D>("GUI\\speedTowerGUIPressed");
-            speedButton = new Button(speedNormal, speedHover, speedPressed, new Vector2(32, level.Height * 57));
+            speedButton = new Button(speedNormal, speedHover, speedPressed, new Vector2(34, level.Height * 57));
             speedButton.Clicked += new EventHandler(speedButton_Clicked);
 
             Texture2D slowNormal = Content.Load<Texture2D>("GUI\\slowTowerGUINormal");
             Texture2D slowHover = Content.Load<Texture2D>("GUI\\slowTowerGUIHover");
             Texture2D slowPressed = Content.Load<Texture2D>("GUI\\slowTowerGUIPressed");
-            slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(64, level.Height * 57));
+            slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(66, level.Height * 57));
             slowButton.Clicked += new EventHandler(slowButton_Clicked);
 
         }

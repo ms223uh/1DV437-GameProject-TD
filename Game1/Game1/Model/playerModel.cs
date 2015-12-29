@@ -13,7 +13,7 @@ namespace Game1.Model
     {
         private levelModel level;
 
-        private int money = 50;
+        private int money = 100;
         private int lives = 30;
 
         private Texture2D[] towerTexture;
@@ -136,7 +136,7 @@ namespace Game1.Model
             {
                 case "basicTower":
                     {
-                        towerToAdd = new basicTower(towerTexture[0], 
+                        towerToAdd = new basicTower(towerTexture[0],
                             bulletTexture, new Vector2(tileX, tileY));
                         break;
                     }
@@ -159,7 +159,7 @@ namespace Game1.Model
                 towers.Add(towerToAdd);
                 money -= towerToAdd.Cost;
 
-                
+
                 newTowerType = string.Empty;
             }
         }
@@ -167,4 +167,4 @@ namespace Game1.Model
 
     }
 
-    }
+}

@@ -38,10 +38,7 @@ namespace Game1.Model
             }
         }
 
-        public float DistanceToDestination
-        {
-            get { return Vector2.Distance(position, waypoints.Peek()); }
-        }
+        
 
         public float CurrentHealth
         {
@@ -51,14 +48,19 @@ namespace Game1.Model
 
         public bool IsDead
         {
-            get { return currentHealth <= 0; }
+           // get { return currentHealth <= 0; }
 
-          //  get { return !alive; }
+           get { return !alive; }
         }
 
         public int BountyGiven
         {
             get { return bountyGiven; }
+        }
+
+        public float DistanceToDestination
+        {
+            get { return Vector2.Distance(position, waypoints.Peek()); }
         }
 
 
@@ -89,7 +91,7 @@ namespace Game1.Model
 
             if (waypoints.Count > 0)
             {
-                if (DistanceToDestination < speed)
+                if (DistanceToDestination < 1f)
                 {
                     position = waypoints.Peek();
                     waypoints.Dequeue();
@@ -100,21 +102,22 @@ namespace Game1.Model
                     Vector2 direction = waypoints.Peek() - position;
                     direction.Normalize();
 
+                    
                     float temporarySpeed = speed;
 
-
+                    
                     if (modifierCurrentTime > modifierDuration)
                     {
-
+                        
                         speedModifier = 0;
                         modifierCurrentTime = 0;
                     }
 
                     if (speedModifier != 0 && modifierCurrentTime <= modifierDuration)
                     {
-
+                        
                         temporarySpeed *= speedModifier;
-
+                        
                         modifierCurrentTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     }
 
@@ -122,12 +125,13 @@ namespace Game1.Model
 
                     position += velocity;
                 }
-            
             }
 
             else
                 alive = false;
 
+            if (currentHealth <= 0)
+                alive = false;
         }
 
 

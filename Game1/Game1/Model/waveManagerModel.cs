@@ -13,17 +13,19 @@ namespace Game1.Model
 
         private int numberOfWaves;
         private float timeSinceLastWave;
-        private bool waveFinished = false;
+        
         private Texture2D[] enemyTexture;
 
         private Queue<waveModel> waves = new Queue<waveModel>();
-        
+
+        private bool waveFinished = false;
+
         private levelModel level;
 
 
         public waveModel CurrentWave
         {
-            get { return waves.Peek();}
+            get { return waves.Peek(); }
         }
 
         public List<enemyModel> Enemies
@@ -57,23 +59,23 @@ namespace Game1.Model
                     level, enemyTexture[1]);
                 }
 
-
+               
 
                 waves.Enqueue(wave);
-                StartNextWave();
+                
             }
 
-            
+            StartNextWave();
         }
 
 
-        private void StartNextWave()
+        public void StartNextWave()
         {
-            if (waves.Count > 0) 
+            if (waves.Count > 0)
             {
-                waves.Peek().Start(); 
+                waves.Peek().Start();
 
-                timeSinceLastWave = 0; 
+                timeSinceLastWave = 0;
                 waveFinished = false;
             }
             
@@ -82,24 +84,24 @@ namespace Game1.Model
 
         public void Update(GameTime gameTime)
         {
-            CurrentWave.Update(gameTime); 
+            CurrentWave.Update(gameTime);
 
-            if (CurrentWave.RoundOver) 
+            if (CurrentWave.RoundOver)
             {
                 waveFinished = true;
             }
 
-            if (waveFinished) 
+            if (waveFinished)
             {
-                timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds; 
+                timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (timeSinceLastWave > 2.0f) 
+            if (timeSinceLastWave > 2.0f)
             {
-                waves.Dequeue(); 
-                StartNextWave(); 
+                waves.Dequeue();
+                StartNextWave();
             }
-
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -107,8 +109,7 @@ namespace Game1.Model
             CurrentWave.Draw(spriteBatch);
         }
 
-        }
-
-
     }
 
+
+}

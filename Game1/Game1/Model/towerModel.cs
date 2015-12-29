@@ -60,7 +60,7 @@ namespace Game1.Model
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
 
             foreach(bulletModel bullet in bulletList)

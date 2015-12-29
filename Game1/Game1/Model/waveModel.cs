@@ -14,6 +14,7 @@ namespace Game1.Model
         private int waveNumber;
         private float spawnTimer;
         private int enemiesHasSpawned = 0;
+        waveManagerModel waveManger;
 
         private bool enemyAtEnd;
         private bool spawningEnemies;
@@ -63,13 +64,15 @@ namespace Game1.Model
         private void AddEnemy()
         {
             enemyModel enemy = new enemyModel(enemyTexture,
-            level.Waypoints.Peek(), 100, 2, 0.5f);
+            level.Waypoints.Peek(), 100, 2, 1.5f);
 
             if (waveNumber == 1)
             {
                 enemy = new enemyModel(enemyTexture,
                 level.Waypoints.Peek(), 100, 1, 1.0f);
             }
+
+            
 
             enemy.setWaypoints(level.Waypoints);
             enemies.Add(enemy);
@@ -96,10 +99,10 @@ namespace Game1.Model
             {
                 spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (spawnTimer > 1.0f) // time between enemies
-                {
+                
                     AddEnemy();
-                }
-                    
+                
+
             }
 
 
@@ -111,10 +114,13 @@ namespace Game1.Model
 
                 if (enemy.IsDead)
                 {
-                    if(enemy.CurrentHealth > 0)
+                    if (enemy.CurrentHealth > 0)
                     {
                         enemyAtEnd = true;
+                        
                     }
+
+                    
 
                     enemies.Remove(enemy);
                     i--;
@@ -128,7 +134,7 @@ namespace Game1.Model
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach(enemyModel enemy in enemies)
+            foreach (enemyModel enemy in enemies)
             {
                 enemy.Draw(spriteBatch);
             }
