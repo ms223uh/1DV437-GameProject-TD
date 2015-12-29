@@ -96,7 +96,8 @@ namespace Game1
             Texture2D[] enemyTextures = new Texture2D[]
             {
             Content.Load<Texture2D>("zombie1"),
-            Content.Load<Texture2D>("zombie2")
+            Content.Load<Texture2D>("zombie2"),
+            Content.Load<Texture2D>("zombie3")
             };
 
             

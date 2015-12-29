@@ -11,6 +11,8 @@ namespace Game1.Model
     class waveManagerModel
     {
 
+        playerModel player;
+
         private int numberOfWaves;
         private float timeSinceLastWave;
         
@@ -47,24 +49,62 @@ namespace Game1.Model
 
             for (int i = 0; i < numberOfWaves; i++)
             {
-                int initialNumberOfEnemies = 6;
+                int initialNumberOfEnemies = 12;
                 int numberModifier = (i / 6) + 1;
 
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[0]);
 
-                if (i == 1)
+                
+
+                if (i == 5)
+                {
+                    wave = new waveModel(i, 1 * numberModifier,
+                    player, level, enemyTexture[2]);
+                }
+
+                if (i == 8)
                 {
                     wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[1]);
                 }
 
-               
+                if (i == 13)
+                {
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    player, level, enemyTexture[1]);
+                }
+
+                if (i == 15)
+                {
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    player, level, enemyTexture[1]);
+                }
+
+                if (i == 17)
+                {
+                    wave = new waveModel(i, 2 * numberModifier,
+                    player, level, enemyTexture[2]);
+                }
+
+                if (i == 21)
+                {
+                    wave = new waveModel(i, 2 * numberModifier,
+                    player, level, enemyTexture[1]);
+                }
+
+                if (i == 24)
+                {
+                    wave = new waveModel(i, 2 * numberModifier,
+                    player, level, enemyTexture[2]);
+                }
+
+
 
                 waves.Enqueue(wave);
                 
             }
-
+            
             StartNextWave();
         }
 
@@ -77,6 +117,7 @@ namespace Game1.Model
 
                 timeSinceLastWave = 0;
                 waveFinished = false;
+                
             }
             
         }
@@ -96,8 +137,9 @@ namespace Game1.Model
                 timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (timeSinceLastWave > 2.0f)
+            if (timeSinceLastWave > 3.5f)
             {
+                
                 waves.Dequeue();
                 StartNextWave();
             }
