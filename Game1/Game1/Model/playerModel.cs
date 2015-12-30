@@ -13,7 +13,7 @@ namespace Game1.Model
     {
         private levelModel level;
 
-        private int money = 50;
+        private int money = 440;
         private int lives = 30;
 
         private Texture2D[] towerTexture;
@@ -157,6 +157,12 @@ namespace Game1.Model
                 case "bomberTower":
                     {
                         towerToAdd = new bomberTower(towerTexture[3],
+                            bulletTexture, new Vector2(tileX, tileY));
+                        break;
+                    }
+                case "rangeTower":
+                    {
+                        towerToAdd = new rangeTower(towerTexture[4],
                             bulletTexture, new Vector2(tileX, tileY));
                         break;
                     }

@@ -8,16 +8,16 @@ using Game1.Model;
 
 namespace Game1.Tower
 {
-    public class speedTower : towerModel
+    public class rangeTower : towerModel
     {
 
 
-        public speedTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
+        public rangeTower(Texture2D texture, Texture2D bulletTexture, Vector2 position)
             : base(texture, bulletTexture, position)
         {
-            this.attackDamage = 6;
-            this.cost = 25;
-            this.attackRadius = 125;
+            this.attackDamage = 10;
+            this.cost = 45;
+            this.attackRadius = 265;
         }
 
         public override void Update(GameTime gameTime)
@@ -27,7 +27,7 @@ namespace Game1.Tower
             if (bulletTimer >= 0.75f && target != null)
             {
                 bulletModel bullet = new bulletModel(bulletTexture, Vector2.Subtract(center,
-                    new Vector2(bulletTexture.Width / 2)), rotation, 16, attackDamage);
+                    new Vector2(bulletTexture.Width / 2)), rotation, 5, attackDamage);
 
                 bulletList.Add(bullet);
                 bulletTimer = 0;

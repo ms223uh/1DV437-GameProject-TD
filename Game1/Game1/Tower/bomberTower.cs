@@ -16,8 +16,8 @@ namespace Game1.Tower
             : base(texture, bulletTexture, position)
         {
             this.attackDamage = 25;
-            this.cost = 30;
-            this.attackRadius = 150;
+            this.cost = 75;
+            this.attackRadius = 125;
         }
 
         public override void Update(GameTime gameTime)
@@ -27,7 +27,7 @@ namespace Game1.Tower
             if (bulletTimer >= 0.75f && target != null)
             {
                 bulletModel bullet = new bulletModel(bulletTexture, Vector2.Subtract(center,
-                    new Vector2(bulletTexture.Width / 2)), rotation, 4, attackDamage);
+                    new Vector2(bulletTexture.Width / 2)), rotation, 2, attackDamage);
 
                 bulletList.Add(bullet);
                 bulletTimer = 0;

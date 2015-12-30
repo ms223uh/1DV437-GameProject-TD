@@ -27,6 +27,7 @@ namespace Game1
         Button speedButton;
         Button slowButton;
         Button bomberButton;
+        Button rangeButton;
 
         public static GameWindow WindowObject;
 
@@ -112,7 +113,8 @@ namespace Game1
             Content.Load<Texture2D>("basicTower"),
             Content.Load<Texture2D>("speedTower"),
             Content.Load<Texture2D>("slowTower"),
-            Content.Load<Texture2D>("bomberTower")
+            Content.Load<Texture2D>("bomberTower"),
+            Content.Load<Texture2D>("rangeTower")
             };
 
             //tower = new towerModel(towerTexture, Vector2.Zero);
@@ -124,28 +126,34 @@ namespace Game1
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 0));
 
             Texture2D basicNormal = Content.Load<Texture2D>("GUI\\basicTowerGUI");
-            Texture2D basicHover = Content.Load<Texture2D>("GUI\\basicHoverGUI");
+            Texture2D basicHover = Content.Load<Texture2D>("GUI\\basicHover");
             Texture2D basicPressed = Content.Load<Texture2D>("GUI\\pressedButton");
             basicButton = new Button(basicNormal, basicHover, basicPressed, new Vector2(0, level.Height * 55));
             basicButton.Clicked += new EventHandler(basicButton_Clicked);
 
             Texture2D speedNormal = Content.Load<Texture2D>("GUI\\speedTowerGUI");
-            Texture2D speedHover = Content.Load<Texture2D>("GUI\\speedHoverGUI");
+            Texture2D speedHover = Content.Load<Texture2D>("GUI\\speedHover");
             Texture2D speedPressed = Content.Load<Texture2D>("GUI\\pressedButton");
             speedButton = new Button(speedNormal, speedHover, speedPressed, new Vector2(60, level.Height * 55));
             speedButton.Clicked += new EventHandler(speedButton_Clicked);
 
             Texture2D slowNormal = Content.Load<Texture2D>("GUI\\slowTowerGUI");
-            Texture2D slowHover = Content.Load<Texture2D>("GUI\\slowHoverGUI");
+            Texture2D slowHover = Content.Load<Texture2D>("GUI\\slowHover");
             Texture2D slowPressed = Content.Load<Texture2D>("GUI\\pressedButton");
             slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(120, level.Height * 55));
             slowButton.Clicked += new EventHandler(slowButton_Clicked);
 
             Texture2D bomberNormal = Content.Load<Texture2D>("GUI\\bomberTowerGUI");
-            Texture2D bomberHover = Content.Load<Texture2D>("GUI\\bomberHoverGUI");
+            Texture2D bomberHover = Content.Load<Texture2D>("GUI\\bomberHover");
             Texture2D bomberPressed = Content.Load<Texture2D>("GUI\\pressedButton");
             bomberButton = new Button(bomberNormal, bomberHover, bomberPressed, new Vector2(180, level.Height * 55));
             bomberButton.Clicked += new EventHandler(bomberButton_Clicked);
+
+            Texture2D rangeNormal = Content.Load<Texture2D>("GUI\\rangeTowerGUI");
+            Texture2D rangeHover = Content.Load<Texture2D>("GUI\\rangeHover");
+            Texture2D rangePressed = Content.Load<Texture2D>("GUI\\pressedButton");
+            rangeButton = new Button(rangeNormal, rangeHover, rangePressed, new Vector2(240, level.Height * 55));
+            rangeButton.Clicked += new EventHandler(rangeButton_Clicked);
 
         }
 
@@ -167,6 +175,11 @@ namespace Game1
         private void bomberButton_Clicked(object sender, EventArgs e)
         {
             player.NewTowerType = "bomberTower";
+        }
+
+        private void rangeButton_Clicked(object sender, EventArgs e)
+        {
+            player.NewTowerType = "rangeTower";
         }
 
         /// <summary>
@@ -217,6 +230,7 @@ namespace Game1
             speedButton.Update(gameTime);
             slowButton.Update(gameTime);
             bomberButton.Update(gameTime);
+            rangeButton.Update(gameTime);
 
             base.Update(gameTime);
 
@@ -246,6 +260,7 @@ namespace Game1
             speedButton.Draw(spriteBatch);
             slowButton.Draw(spriteBatch);
             bomberButton.Draw(spriteBatch);
+            rangeButton.Draw(spriteBatch);
 
             spriteBatch.End();
 

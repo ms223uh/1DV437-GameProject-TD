@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tower\basicTower.cs" />
     <Compile Include="Tower\bomberTower.cs" />
+    <Compile Include="Tower\rangeTower.cs" />
     <Compile Include="Tower\slowTower.cs" />
     <Compile Include="Tower\speedTower.cs" />
     <Compile Include="View\camera.cs" />
@@ -79,13 +80,13 @@
     <Content Include="Content\bushSprite.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\basicHoverGUI.png">
+    <Content Include="Content\GUI\basicHover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\GUI\basicTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\bomberHoverGUI.png">
+    <Content Include="Content\GUI\bomberHover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\GUI\bomberTowerGUI.png">
@@ -94,16 +95,25 @@
     <Content Include="Content\GUI\pressedButton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\slowHoverGUI.png">
+    <Content Include="Content\GUI\rangeHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\GUI\slowHover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\GUI\slowTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\GUI\speedHoverGUI.png">
+    <Content Include="Content\GUI\speedHover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\GUI\speedTowerGUI.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\rangeTower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\GUI\rangeTowerGUI.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\rockSprite.png">

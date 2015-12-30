@@ -18,10 +18,10 @@ namespace Game1.Tower
             : base(texture, bulletTexture, position)
         {
             this.speedModifier = 0.5f;
-            this.modifierDuration = 2.0f;
-            this.attackDamage = 8;
-            this.cost = 15;
-            this.attackRadius = 180;
+            this.modifierDuration = 2.1f;
+            this.attackDamage = 2;
+            this.cost = 30;
+            this.attackRadius = 150;
         }
 
         public override void Update(GameTime gameTime)

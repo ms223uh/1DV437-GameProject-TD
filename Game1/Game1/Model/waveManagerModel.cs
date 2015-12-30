@@ -46,24 +46,32 @@ namespace Game1.Model
             this.numberOfWaves = numberOfWaves;
             this.enemyTexture = enemyTexture;
             this.level = level;
-
+            
             for (int i = 0; i < numberOfWaves; i++)
             {
-                int initialNumberOfEnemies = 12;
-                int numberModifier = (i / 6) + 1;
+                int initialNumberOfEnemies = 16;
+                int numberModifier = (i / 2) + 1;
+
+                
 
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[0]);
 
                 
 
-                if (i == 5)
+                if (i == 4)
+                {
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    player, level, enemyTexture[1]);
+                }
+
+                if (i == 6)
                 {
                     wave = new waveModel(i, 1 * numberModifier,
                     player, level, enemyTexture[2]);
                 }
 
-                if (i == 8)
+                if (i == 11)
                 {
                     wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[1]);
@@ -71,11 +79,11 @@ namespace Game1.Model
 
                 if (i == 13)
                 {
-                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
-                    player, level, enemyTexture[1]);
+                    wave = new waveModel(i, 1 * numberModifier,
+                    player, level, enemyTexture[2]);
                 }
 
-                if (i == 15)
+                if (i == 17)
                 {
                     wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[1]);
@@ -83,8 +91,8 @@ namespace Game1.Model
 
                 if (i == 17)
                 {
-                    wave = new waveModel(i, 1 * numberModifier,
-                    player, level, enemyTexture[2]);
+                    wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
+                    player, level, enemyTexture[1]);
                 }
 
                 if (i == 21)
@@ -98,6 +106,8 @@ namespace Game1.Model
                     wave = new waveModel(i, 2 * numberModifier,
                     player, level, enemyTexture[2]);
                 }
+
+
 
 
 
@@ -130,11 +140,13 @@ namespace Game1.Model
             if (CurrentWave.RoundOver)
             {
                 waveFinished = true;
+                
             }
 
             if (waveFinished)
             {
                 timeSinceLastWave += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                
             }
 
             if (timeSinceLastWave > 2.5f)
