@@ -13,7 +13,7 @@ namespace Game1.Model
     {
         private levelModel level;
 
-        private int money = 440;
+        private int money = 44;
         private int lives = 30;
 
         private Texture2D[] towerTexture;
