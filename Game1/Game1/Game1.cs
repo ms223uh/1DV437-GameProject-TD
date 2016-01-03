@@ -202,6 +202,12 @@ namespace Game1
                 Exit();
 
 
+            if (player.Lives <= 28)
+            {
+                Exit();
+            }
+
+
             //enemy1.Update(gameTime);
 
 
