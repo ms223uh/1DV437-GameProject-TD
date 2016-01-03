@@ -18,7 +18,7 @@ namespace Game1.Model
         waveManagerModel waveManger;
 
         private bool enemyAtEnd;
-        private bool spawningEnemies;
+        public bool spawningEnemies;
 
         private levelModel level;
         private Texture2D enemyTexture;
@@ -222,6 +222,8 @@ namespace Game1.Model
 
             enemiesHasSpawned++;
 
+            
+
         }
 
         public void Start()
@@ -230,6 +232,7 @@ namespace Game1.Model
             spawningEnemies = true;
         }
 
+        
 
         public void Update(GameTime gameTime)
         {
@@ -271,7 +274,15 @@ namespace Game1.Model
 
                     enemies.Remove(enemy);
                     i--;
+               
 
+                }
+
+                if (player.Lives <= 0)
+                {
+                    enemies.Remove(enemy);
+                    enemyAtEnd = true;
+                    spawningEnemies = false;
                 }
 
             }

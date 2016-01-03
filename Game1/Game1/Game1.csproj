@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="GUI\Button.cs" />
+    <Compile Include="GUI\gameOver.cs" />
     <Compile Include="GUI\Toolbar.cs" />
     <Compile Include="Model\bulletModel.cs" />
     <Compile Include="Model\enemyModel.cs" />

@@ -14,6 +14,7 @@ namespace Game1
     /// </summary>
     public class Game1 : Game
     {
+        gameOver gameOver;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
@@ -22,6 +23,7 @@ namespace Game1
         playerModel player;
         // waveModel wave;
         waveManagerModel waveManager;
+        waveModel waveModel;
         Toolbar toolbar;
         Button basicButton;
         Button speedButton;
@@ -121,9 +123,16 @@ namespace Game1
             player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
             waveManager = new waveManagerModel(player, level, 24, enemyTextures);
 
-            Texture2D topBar = Content.Load<Texture2D>("toolBar");
             SpriteFont font = Content.Load<SpriteFont>("Arial");
+
+
+            //Texture2D gameBar = Content.Load<Texture2D>("toolBar");
+            //gameOver = new gameOver(top, font, new Vector2(0, level.Height * 0));
+
+
+            Texture2D topBar = Content.Load<Texture2D>("toolBar");
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 0));
+
 
             Texture2D basicNormal = Content.Load<Texture2D>("GUI\\basicTowerGUI");
             Texture2D basicHover = Content.Load<Texture2D>("GUI\\basicHover");
@@ -199,13 +208,23 @@ namespace Game1
         protected override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-
-            if (player.Lives <= 28)
             {
                 Exit();
             }
+            if (Keyboard.GetState().IsKeyDown(Keys.R))
+            {
+                using (var game = new Game1())
+                    game.Run();
+            }
+
+
+            //if (player.Lives <= 28)
+            //{
+            //    using (Game1 game = new Game1())
+            //    {
+            //        game.Run();
+            //    }
+            //}
 
 
             //enemy1.Update(gameTime);
@@ -261,6 +280,7 @@ namespace Game1
             player.Draw(spriteBatch);
 
             toolbar.Draw(spriteBatch, player, waveManager);
+            
 
             basicButton.Draw(spriteBatch);
             speedButton.Draw(spriteBatch);
