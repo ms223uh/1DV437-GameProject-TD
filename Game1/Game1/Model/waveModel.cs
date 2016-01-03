@@ -144,7 +144,7 @@ namespace Game1.Model
             if (waveNumber == 12)
             {
                 enemy = new enemyModel(enemyTexture,
-                level.Waypoints.Peek(), 185, 2, 1.2f);
+                level.Waypoints.Peek(), 175, 2, 1.2f);
             }
 
             if (waveNumber == 13)

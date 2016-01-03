@@ -57,7 +57,9 @@ namespace Game1.Model
                 waveModel wave = new waveModel(i, initialNumberOfEnemies * numberModifier,
                     player, level, enemyTexture[0]);
 
+
                 
+
 
                 if (i == 4)
                 {
@@ -67,7 +69,7 @@ namespace Game1.Model
 
                 if (i == 6)
                 {
-                    wave = new waveModel(i, 1 * numberModifier,
+                    wave = new waveModel(i, 1 * 1,
                     player, level, enemyTexture[2]);
                 }
 
@@ -79,7 +81,7 @@ namespace Game1.Model
 
                 if (i == 13)
                 {
-                    wave = new waveModel(i, 1 * numberModifier,
+                    wave = new waveModel(i, 1 * 2,
                     player, level, enemyTexture[2]);
                 }
 
@@ -103,7 +105,7 @@ namespace Game1.Model
 
                 if (i == 23)
                 {
-                    wave = new waveModel(i, 2 * numberModifier,
+                    wave = new waveModel(i, 4 * 1,
                     player, level, enemyTexture[2]);
                 }
 
