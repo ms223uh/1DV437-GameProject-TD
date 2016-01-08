@@ -76,30 +76,30 @@ namespace Game1.GUI
 
             spriteBatch.Draw(texture, position, Color.White);
 
-            
+             
 
             {
                 string text = string.Format("Gold: {0} Lives: {1} Wave: {2}", player.Money, player.Lives, waveManager.Round);
                 spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
             }
 
-            if (player.Lives <= 0)
+            if (player.Lives >= 0)
             {
                 
-            string text = string.Format("Game Over! \n Press ESC to exit or R to restart.");
-            spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
-        
+                string text1 = string.Format("Game Over! \n Press ESC to exit or R to restart.");
+                spriteBatch.DrawString(spriteFont, text1, textPosition, Color.White);
+
 
             }
             if (player.Lives >= 1 && wave.WaveNumber == 1)
             {
-                string text = string.Format("You Won! \n Press ESC to exit or R to restart.");
-                spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
+                string text2 = string.Format("You Won! \n Press ESC to exit or R to restart.");
+                spriteBatch.DrawString(spriteFont, text2, textPosition, Color.White);
 
             }
 
 
-             }
+        }
 
             
 

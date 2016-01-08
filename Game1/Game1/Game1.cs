@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
+
 namespace Game1
 {
     /// <summary>
@@ -14,6 +15,7 @@ namespace Game1
     /// </summary>
     public class Game1 : Game
     {
+        
         
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -31,16 +33,25 @@ namespace Game1
         Button bomberButton;
         Button rangeButton;
 
+        public static Rectangle screen;
+        
+        
+
         public static GameWindow WindowObject;
+
+        
+
+        
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             //6graphics.IsFullScreen = true;
-
+            
             graphics.PreferredBackBufferHeight = level.Height * 60;
             graphics.PreferredBackBufferWidth = level.Width * 60;
+            
 
             graphics.ApplyChanges();
             IsMouseVisible = true;
@@ -57,6 +68,11 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            
+
+            
+
             Game1.WindowObject = Window;
             Mouse.WindowHandle = Window.Handle;
             Window.Position = Window.Position + new Point(0, 1);
@@ -72,6 +88,9 @@ namespace Game1
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+           
+            
 
             Texture2D grass = Content.Load<Texture2D>("grass");
             Texture2D path = Content.Load<Texture2D>("path");
@@ -164,6 +183,9 @@ namespace Game1
             rangeButton = new Button(rangeNormal, rangeHover, rangePressed, new Vector2(240, level.Height * 55));
             rangeButton.Clicked += new EventHandler(rangeButton_Clicked);
 
+
+
+
         }
 
         private void basicButton_Clicked(object sender, EventArgs e)
@@ -218,6 +240,7 @@ namespace Game1
             }
 
 
+
             //if (player.Lives <= 28)
             //{
             //    using (Game1 game = new Game1())
@@ -270,7 +293,12 @@ namespace Game1
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            
+
             spriteBatch.Begin();
+
+            
+
 
             level.Draw(spriteBatch);
             //enemy1.Draw(spriteBatch);
