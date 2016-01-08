@@ -14,7 +14,7 @@ namespace Game1
     /// </summary>
     public class Game1 : Game
     {
-        gameOver gameOver;
+        
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
@@ -121,7 +121,7 @@ namespace Game1
 
             //tower = new towerModel(towerTexture, Vector2.Zero);
             player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
-            waveManager = new waveManagerModel(player, level, 24, enemyTextures);
+            waveManager = new waveManagerModel(player, level, 25, enemyTextures);
 
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 

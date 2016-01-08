@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game1.Model
 {
-    class waveModel
+      class waveModel
     {
 
         playerModel player;
-        private int numberOfEnemies;
-        private int waveNumber;
-        private float spawnTimer;
+        public int numberOfEnemies;
+        public int waveNumber;
+        public float spawnTimer;
         private int enemiesHasSpawned = 0;
         waveManagerModel waveManger;
 
@@ -23,8 +23,8 @@ namespace Game1.Model
         private levelModel level;
         private Texture2D enemyTexture;
         public List<enemyModel> enemies = new List<enemyModel>();
-
-
+        private playerModel players;
+        private object enemyTexture1;
 
         public bool RoundOver
         {
@@ -37,6 +37,14 @@ namespace Game1.Model
         public int RoundNumber
         {
             get { return waveNumber; }
+            
+        }
+
+        public int WaveNumber
+        {
+            get { return waveNumber; }
+            set { waveNumber = value; }
+
         }
 
         public bool EnemyAtEnd
@@ -60,7 +68,17 @@ namespace Game1.Model
             this.player = player;
             this.level = level;
             this.enemyTexture = enemyTexture;
+            
 
+        }
+
+        public waveModel(int waveNumber, int numberOfEnemies, playerModel players, levelModel level, object enemyTexture1)
+        {
+            this.waveNumber = waveNumber;
+            this.numberOfEnemies = numberOfEnemies;
+            this.players = players;
+            this.level = level;
+            this.enemyTexture1 = enemyTexture1;
         }
 
         private void AddEnemy()
@@ -212,10 +230,15 @@ namespace Game1.Model
                 enemy = new enemyModel(enemyTexture,
                 level.Waypoints.Peek(), 7500, 250, 1.4f);
             }
+            if (waveNumber == 24)
+            {
+                enemy = new enemyModel(enemyTexture,
+                level.Waypoints.Peek(), 1, 0, 1.4f);
+            }
 
 
 
-            
+
             enemy.setWaypoints(level.Waypoints);
             enemies.Add(enemy);
             spawnTimer = 0;
@@ -284,7 +307,12 @@ namespace Game1.Model
                     enemyAtEnd = true;
                     spawningEnemies = false;
                 }
-
+                if (player.Lives >= 1 && waveNumber == 24)
+                {
+                    enemies.Remove(enemy);
+                    enemyAtEnd = true;
+                    spawningEnemies = false;
+                }
             }
 
         }

@@ -108,6 +108,11 @@ namespace Game1.Model
                     wave = new waveModel(i, 4 * 1,
                     player, level, enemyTexture[2]);
                 }
+                if (i == 24)
+                {
+                    wave = new waveModel(i, 0 * 0,
+                    player, level, enemyTexture[2]);
+                }
 
 
 
