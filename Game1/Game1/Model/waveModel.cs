@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 
 namespace Game1.Model
 {
@@ -17,6 +19,10 @@ namespace Game1.Model
         private int enemiesHasSpawned = 0;
         waveManagerModel waveManger;
 
+        
+        
+        
+
         private bool enemyAtEnd;
         public bool spawningEnemies;
 
@@ -25,6 +31,8 @@ namespace Game1.Model
         public List<enemyModel> enemies = new List<enemyModel>();
         private playerModel players;
         private object enemyTexture1;
+
+        
 
         public bool RoundOver
         {
@@ -68,6 +76,7 @@ namespace Game1.Model
             this.player = player;
             this.level = level;
             this.enemyTexture = enemyTexture;
+            
             
 
         }
@@ -251,6 +260,7 @@ namespace Game1.Model
 
         public void Start()
         {
+            
             player.Money += 6;
             spawningEnemies = true;
         }
@@ -284,6 +294,8 @@ namespace Game1.Model
 
                 if (enemy.IsDead)
                 {
+                    
+                    
                     if (enemy.CurrentHealth > 0)
                     {
                         enemyAtEnd = true;

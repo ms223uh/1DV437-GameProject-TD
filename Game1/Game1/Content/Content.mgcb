@@ -19,3 +19,9 @@
 /processorParam:TextureFormat=Compressed
 /build:Arial.spritefont
 
+#begin zombieDead.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:zombieDead.wav
+

@@ -23,9 +23,9 @@ namespace Game1.GUI
         public Menu(Texture2D newTexture, GraphicsDevice graphics)
         {
             texture = newTexture;
-
-            size = new Vector2(graphics.Viewport.Width / 8, graphics.Viewport.Height / 30);
-            rectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
+            
+            size = new Vector2(graphics.Viewport.Width / 4, graphics.Viewport.Height / 15);
+            
         }
 
         bool down;
@@ -33,27 +33,28 @@ namespace Game1.GUI
 
         public void Update(MouseState mouse)
         {
-           
 
+            rectangle = new Rectangle((int)position.X, (int)position.Y, (int)size.X, (int)size.Y);
             Rectangle mouseRectangle = new Rectangle(mouse.X, mouse.Y, 1, 1);
+            
 
             if (mouseRectangle.Intersects(rectangle))
             {
                 if (colour.A == 255)
                 {
-                    down = false;
+                    down = true;
                 }
                 if (colour.A == 0)
                 {
-                    down = true;
+                    down = false;
                 }
                 if (down)
                 {
-                    colour.A += 3;
+                    colour.A += 15;
                 }
                 else
                 {
-                    colour.A -= 3;
+                    colour.A -= 15;
                 }
                 if (mouse.LeftButton == ButtonState.Pressed)
                 {
@@ -61,7 +62,7 @@ namespace Game1.GUI
                 }
                 else if (colour.A < 255)
                 {
-                    colour.A += 3;
+                    colour.A += 15;
                     isClicked = false;
                 }
             }

@@ -1,6 +1,7 @@
 ﻿using Game1.GUI;
 using Game1.Model;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -21,9 +22,9 @@ namespace Game1
         SpriteBatch spriteBatch;
         levelModel level = new levelModel();
         enemyModel enemy1;
-        // towerModel tower;
+       
         playerModel player;
-        // waveModel wave;
+        
         waveManagerModel waveManager;
         waveModel waveModel;
         Toolbar toolbar;
@@ -32,6 +33,7 @@ namespace Game1
         Button slowButton;
         Button bomberButton;
         Button rangeButton;
+        
 
         public static Rectangle screen;
         
@@ -43,16 +45,24 @@ namespace Game1
         {
             MainMenu,
             Play,
+            Paused,
+            GameOver,
+            Won,
             Exit
         }
 
         GameState CurrentGameState = GameState.MainMenu;
 
-        int screenWidth = 300;
-        int screenHeight = 300;
+        int screenWidth = 780;
+        int screenHeight = 780;
 
-        Menu pMenu;
+        Menu playMenu;
+        Menu pauseMenu;
+        Menu exitMenu;
+        Menu gameOMenu;
+
         
+
 
         public Game1()
         {
@@ -100,12 +110,44 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+
+            
+
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
 
-            pMenu = new Menu(Content.Load<Texture2D>("GUI\\playButton"), graphics.GraphicsDevice);
-            pMenu.setPosition(new Vector2(250, 350));
-            
+            playMenu = new Menu(Content.Load<Texture2D>("GUI\\playBtn"), graphics.GraphicsDevice);
+            playMenu.setPosition(new Vector2(level.Width * 60 / 2 - playMenu.size.X / 2, level.Height * 60 / 2  - playMenu.size.Y / 2));
+
+            pauseMenu = new Menu(Content.Load<Texture2D>("GUI\\resumeBtn"), graphics.GraphicsDevice);
+            pauseMenu.setPosition(new Vector2(level.Width * 60 / 2 - pauseMenu.size.X / 2, level.Height * 60 / 2 - pauseMenu.size.Y / 2));
+
+            exitMenu = new Menu(Content.Load<Texture2D>("GUI\\exitBtn"), graphics.GraphicsDevice);
+            exitMenu.setPosition(new Vector2(level.Width * 60 / 2 - exitMenu.size.X / 2, level.Height * 60 / 2 + exitMenu.size.Y / 2));
+
+            Texture2D bulletTexture = Content.Load<Texture2D>("bullet1");
+
+            Texture2D[] towerTextures = new Texture2D[]
+            {
+            Content.Load<Texture2D>("basicTower"),
+            Content.Load<Texture2D>("speedTower"),
+            Content.Load<Texture2D>("slowTower"),
+            Content.Load<Texture2D>("bomberTower"),
+            Content.Load<Texture2D>("rangeTower")
+            };
+
+
+            player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
+
+            Texture2D[] enemyTextures = new Texture2D[]
+            {
+            Content.Load<Texture2D>("zombie1"),
+            Content.Load<Texture2D>("zombie2"),
+            Content.Load<Texture2D>("zombie3")
+            };
+
+            waveManager = new waveManagerModel(player, level, 24, enemyTextures);
+            waveModel = new waveModel(0, 0, player, level, enemyTextures[0]);
 
             Texture2D grass = Content.Load<Texture2D>("grass");
             Texture2D path = Content.Load<Texture2D>("path");
@@ -124,46 +166,11 @@ namespace Game1
             level.addTexture(bushSprite);
             level.addTexture(rockSprite);
 
-            //Texture2D enemyTexture = Content.Load<Texture2D>("zombie1");
-            //Texture2D enemyTexture2 = Content.Load<Texture2D>("zombie2");
-
-
-
-            //enemy1 = new enemyModel(enemyTexture, level.Waypoints.Peek(), 100, 10, 2.0f);
-            //enemy1.setWaypoints(level.Waypoints);
-            //wave = new waveModel(0, 100, level, enemyTexture);
-            //wave.Start();
-
-            Texture2D[] enemyTextures = new Texture2D[]
-            {
-            Content.Load<Texture2D>("zombie1"),
-            Content.Load<Texture2D>("zombie2"),
-            Content.Load<Texture2D>("zombie3")
-            };
-
             
-            Texture2D bulletTexture = Content.Load<Texture2D>("bullet1");
-
-            Texture2D[] towerTextures = new Texture2D[]
-            {
-            Content.Load<Texture2D>("basicTower"),
-            Content.Load<Texture2D>("speedTower"),
-            Content.Load<Texture2D>("slowTower"),
-            Content.Load<Texture2D>("bomberTower"),
-            Content.Load<Texture2D>("rangeTower")
-            };
-
-            //tower = new towerModel(towerTexture, Vector2.Zero);
-            player = new playerModel(level, towerTextures, graphics.GraphicsDevice.Viewport, bulletTexture);
-            waveManager = new waveManagerModel(player, level, 25, enemyTextures);
 
             SpriteFont font = Content.Load<SpriteFont>("Arial");
 
-
-            //Texture2D gameBar = Content.Load<Texture2D>("toolBar");
-            //gameOver = new gameOver(top, font, new Vector2(0, level.Height * 0));
-
-
+            
             Texture2D topBar = Content.Load<Texture2D>("toolBar");
             toolbar = new Toolbar(topBar, font, new Vector2(0, level.Height * 0));
 
@@ -247,32 +254,56 @@ namespace Game1
 
             MouseState mouse = Mouse.GetState();
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.P))
             {
-                Exit();
+                CurrentGameState = GameState.Paused;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.R))
+
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
-                using (var game = new Game1())
-                    game.Run();
+                CurrentGameState = GameState.MainMenu;
             }
+
 
             switch (CurrentGameState)
             {
                 case GameState.MainMenu:
-                    if (pMenu.isClicked == true)
+
+                    if (playMenu.isClicked == true)
                     {
-                        
+                        LoadContent();
                         CurrentGameState = GameState.Play;
-                        pMenu.Update(mouse);
-
+                        playMenu.isClicked = false;
                         
-
 
                     }
+                    playMenu.Update(mouse);
+
+                    if (exitMenu.isClicked == true)
+                    {
+                        
+                        Exit();
+
+                    }
+                    exitMenu.Update(mouse);
+
+
                     break;
 
                 case GameState.Play:
+
+                    if (player.Lives <= 0)
+                    {
+                        CurrentGameState = GameState.GameOver;
+                        playMenu.isClicked = false;
+
+                    }
+
+                    if (player.Lives >= 1 && waveManager.Round == 24)
+                    {
+                        CurrentGameState = GameState.Won;
+                        playMenu.isClicked = false;
+                    }
 
 
                     waveManager.Update(gameTime);
@@ -286,41 +317,63 @@ namespace Game1
                     rangeButton.Update(gameTime);
 
                     break;
+
+                case GameState.Paused:
+                    if (pauseMenu.isClicked == true)
+                    {
+
+                        CurrentGameState = GameState.Play;
+
+                    }
+                    pauseMenu.Update(mouse);
+                    break;
+
+                case GameState.GameOver:
+
+                    if (playMenu.isClicked == true)
+                    {
+                        LoadContent();
+                        CurrentGameState = GameState.Play;
+                        playMenu.isClicked = false;
+
+
+                    }
+                    playMenu.Update(mouse);
+
+                    if (exitMenu.isClicked == true)
+                    {
+
+                        Exit();
+
+                    }
+                    exitMenu.Update(mouse);
+                    break;
+
+                case GameState.Won:
+
+                    if (playMenu.isClicked == true)
+                    {
+                        LoadContent();
+                        CurrentGameState = GameState.Play;
+                        playMenu.isClicked = false;
+
+
+                    }
+                    playMenu.Update(mouse);
+
+                    if (exitMenu.isClicked == true)
+                    {
+
+                        Exit();
+
+                    }
+                    exitMenu.Update(mouse);
+                    break;
+
+
             }
 
-
-
-            //if (player.Lives <= 28)
-            //{
-            //    using (Game1 game = new Game1())
-            //    {
-            //        game.Run();
-            //    }
-            //}
-
-
-            //enemy1.Update(gameTime);
-
-
-            //if (tower.Target == null)
-            //{
-            //    List<enemyModel> enemies = new List<enemyModel>();
-
-            //    enemies.Add(enemy1);
-            //    tower.getTheClosestTarget(enemies);
-            //}
-            //tower.Update(gameTime);
-
-            //base.Update(gameTime);
-
-
-            //enemy1.Update(gameTime);
-
-            //List<enemyModel> enemies = new List<enemyModel>();
-            //enemies.Add(enemy1);
-
             
-
             base.Update(gameTime);
 
 
@@ -342,8 +395,11 @@ namespace Game1
             switch (CurrentGameState)
             {
                 case GameState.MainMenu:
-                    spriteBatch.Draw(Content.Load<Texture2D>("GUI\\MainMenu"), new Rectangle(0,0, screenWidth, screenHeight), Color.White);
-                    pMenu.Draw(spriteBatch);
+                    spriteBatch.Draw(Content.Load<Texture2D>("GUI\\mainMenu"), new Rectangle(0,0, screenWidth, screenHeight), Color.White);
+                    
+                    playMenu.Draw(spriteBatch);
+                    exitMenu.Draw(spriteBatch);
+
                     break;
 
                 case GameState.Play:
@@ -363,6 +419,45 @@ namespace Game1
                     slowButton.Draw(spriteBatch);
                     bomberButton.Draw(spriteBatch);
                     rangeButton.Draw(spriteBatch);
+
+
+                    break;
+
+                case GameState.Paused:
+
+                    level.Draw(spriteBatch);
+                    //enemy1.Draw(spriteBatch);
+
+                    
+                    pauseMenu.Draw(spriteBatch);
+
+
+                    break;
+
+                case GameState.GameOver:
+
+                    
+                    //enemy1.Draw(spriteBatch);
+
+
+                    spriteBatch.Draw(Content.Load<Texture2D>("GUI\\overMenu"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+
+                    playMenu.Draw(spriteBatch);
+                    exitMenu.Draw(spriteBatch);
+
+
+                    break;
+
+                case GameState.Won:
+
+
+                    //enemy1.Draw(spriteBatch);
+
+
+                    spriteBatch.Draw(Content.Load<Texture2D>("GUI\\wonMenu"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+
+                    playMenu.Draw(spriteBatch);
+                    exitMenu.Draw(spriteBatch);
 
 
                     break;

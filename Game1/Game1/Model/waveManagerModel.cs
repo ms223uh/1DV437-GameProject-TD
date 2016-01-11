@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Microsoft.Xna.Framework.Content;
 
 namespace Game1.Model
 {
@@ -39,6 +39,9 @@ namespace Game1.Model
         {
             get { return CurrentWave.RoundNumber + 1; }
         }
+
+
+        
 
 
         public waveManagerModel(playerModel player, levelModel level, int numberOfWaves, Texture2D[] enemyTexture)

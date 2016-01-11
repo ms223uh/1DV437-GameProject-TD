@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 
 namespace Game1.Model
 {
@@ -20,6 +22,18 @@ namespace Game1.Model
         private float speedModifier;
         private float modifierDuration;
         private float modifierCurrentTime;
+
+       
+
+
+        protected void LoadContent()
+        {
+
+
+
+
+        }
+
 
 
         public float SpeedModifier
@@ -48,9 +62,9 @@ namespace Game1.Model
 
         public bool IsDead
         {
-           // get { return currentHealth <= 0; }
-
-           get { return !alive; }
+            // get { return currentHealth <= 0; }
+            
+            get { return !alive; }
         }
 
         public int BountyGiven
@@ -129,13 +143,15 @@ namespace Game1.Model
 
             else
                 alive = false;
+            
 
             if (currentHealth <= 0)
-                alive = false;
+            alive = false;
+
         }
 
 
-        public override void Draw(SpriteBatch spriteBatch )
+        public override void Draw(SpriteBatch spriteBatch)
         {
             if (alive)
             {
