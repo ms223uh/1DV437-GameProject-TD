@@ -262,6 +262,7 @@ namespace Game1
                 case GameState.MainMenu:
                     if (pMenu.isClicked == true)
                     {
+                        
                         CurrentGameState = GameState.Play;
                         pMenu.Update(mouse);
 
