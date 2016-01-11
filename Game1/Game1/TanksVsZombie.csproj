@@ -8,14 +8,14 @@
     <ProjectGuid>{07DA2556-3611-42A6-AD4B-263D2346F7DF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Game1</RootNamespace>
-    <AssemblyName>Game1</AssemblyName>
+    <RootNamespace>TanksVsZombie</RootNamespace>
+    <AssemblyName>TanksVsZombie</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <MonoGameContentBuilderExe>
     </MonoGameContentBuilderExe>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Mathias\Desktop\TD-AR1.0\</PublishUrl>
+    <PublishUrl>C:\Users\Mathias\Desktop\TvsZ1.0\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>zombie1.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>6BB4D79EF157F3D372B86C79C8ED0F736A52E1D5</ManifestCertificateThumbprint>
@@ -66,13 +66,14 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>TanksVsZombie.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="TanksVsZombie.cs" />
     <Compile Include="GUI\Button.cs" />
     <Compile Include="GUI\Menu.cs" />
     <Compile Include="GUI\Toolbar.cs" />
@@ -209,6 +210,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
+    <Content Include="zombie1.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb">

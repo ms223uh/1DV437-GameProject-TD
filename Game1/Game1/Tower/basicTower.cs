@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.Model;
+using TanksVsZombie.Model;
 
-namespace Game1.Tower
+namespace TanksVsZombie.Tower
 {
     public class basicTower : towerModel
     {

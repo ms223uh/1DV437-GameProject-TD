@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
-namespace Game1.Model
+namespace TanksVsZombie.Model
 {
       class waveModel
     {

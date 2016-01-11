@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Game1.View
+namespace TanksVsZombie.View
 {
     public class camera
     {

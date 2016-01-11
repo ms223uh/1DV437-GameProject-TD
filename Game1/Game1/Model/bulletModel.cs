@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.View;
+using TanksVsZombie.View;
 
-namespace Game1.Model
+namespace TanksVsZombie.Model
 {
     public class bulletModel : camera
     {

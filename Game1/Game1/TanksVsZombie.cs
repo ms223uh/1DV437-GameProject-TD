@@ -1,5 +1,5 @@
-﻿using Game1.GUI;
-using Game1.Model;
+﻿using TanksVsZombie.GUI;
+using TanksVsZombie.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,12 +9,12 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Game1
+namespace TanksVsZombie
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class TanksVsZombie : Game
     {
         
         
@@ -64,7 +64,7 @@ namespace Game1
         
 
 
-        public Game1()
+        public TanksVsZombie()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -94,7 +94,7 @@ namespace Game1
 
 
 
-            Game1.WindowObject = Window;
+            TanksVsZombie.WindowObject = Window;
             Mouse.WindowHandle = Window.Handle;
             Window.Position = Window.Position + new Point(0, 1);
             Window.Position = Window.Position - new Point(0, 1);

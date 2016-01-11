@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Game1.View;
+using TanksVsZombie.View;
 using Microsoft.Xna.Framework.Input;
 
-namespace Game1.GUI
+namespace TanksVsZombie.GUI
 {
     class Menu
     {

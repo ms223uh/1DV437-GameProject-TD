@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Game1.Model
+namespace TanksVsZombie.Model
 {
     class levelModel
     {

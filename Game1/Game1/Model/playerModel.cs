@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Game1.Tower;
+using TanksVsZombie.Tower;
 
-namespace Game1.Model
+namespace TanksVsZombie.Model
 {
     class playerModel
     {
@@ -63,8 +63,8 @@ namespace Game1.Model
         {
             mouseState = Mouse.GetState();
 
-            float x = (float)mouseState.X / Game1.WindowObject.ClientBounds.Width;
-            float y = (float)mouseState.Y / Game1.WindowObject.ClientBounds.Height;
+            float x = (float)mouseState.X / TanksVsZombie.WindowObject.ClientBounds.Width;
+            float y = (float)mouseState.Y / TanksVsZombie.WindowObject.ClientBounds.Height;
 
             cellX = (int)(x * level.Width);
             cellY = (int)(y * level.Height);

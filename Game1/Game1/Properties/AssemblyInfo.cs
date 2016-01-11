@@ -5,19 +5,19 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Game1")]
-[assembly: AssemblyProduct("Game1")]
+[assembly: AssemblyTitle("TanksVsZombie 1.0")]
+[assembly: AssemblyProduct("TanksVsZombie")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyDescription("TanksVsZombie Tower Defence")]
+[assembly: AssemblyCompany("TanksVsZombie")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Mathias Sundin")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("8d35c8e6-d13d-4e90-b580-07fb8e151fb3")]

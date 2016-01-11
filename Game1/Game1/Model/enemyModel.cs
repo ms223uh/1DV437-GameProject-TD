@@ -1,4 +1,4 @@
-﻿using Game1.View;
+﻿using TanksVsZombie.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 
-namespace Game1.Model
+namespace TanksVsZombie.Model
 {
     public class enemyModel : camera
     {
