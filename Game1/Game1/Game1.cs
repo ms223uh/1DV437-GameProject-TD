@@ -33,8 +33,8 @@ namespace Game1
         Button slowButton;
         Button bomberButton;
         Button rangeButton;
-        
 
+        Song song;
         public static Rectangle screen;
         
         
@@ -110,8 +110,9 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
+             song = Content.Load<Song>("bgSound");  
             
+
 
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
@@ -193,20 +194,18 @@ namespace Game1
             slowButton = new Button(slowNormal, slowHover, slowPressed, new Vector2(120, level.Height * 55));
             slowButton.Clicked += new EventHandler(slowButton_Clicked);
 
-            Texture2D bomberNormal = Content.Load<Texture2D>("GUI\\bomberTowerGUI");
-            Texture2D bomberHover = Content.Load<Texture2D>("GUI\\bomberHover");
-            Texture2D bomberPressed = Content.Load<Texture2D>("GUI\\pressedButton");
-            bomberButton = new Button(bomberNormal, bomberHover, bomberPressed, new Vector2(180, level.Height * 55));
-            bomberButton.Clicked += new EventHandler(bomberButton_Clicked);
-
             Texture2D rangeNormal = Content.Load<Texture2D>("GUI\\rangeTowerGUI");
             Texture2D rangeHover = Content.Load<Texture2D>("GUI\\rangeHover");
             Texture2D rangePressed = Content.Load<Texture2D>("GUI\\pressedButton");
-            rangeButton = new Button(rangeNormal, rangeHover, rangePressed, new Vector2(240, level.Height * 55));
+            rangeButton = new Button(rangeNormal, rangeHover, rangePressed, new Vector2(180, level.Height * 55));
             rangeButton.Clicked += new EventHandler(rangeButton_Clicked);
 
-
-
+            Texture2D bomberNormal = Content.Load<Texture2D>("GUI\\bomberTowerGUI");
+            Texture2D bomberHover = Content.Load<Texture2D>("GUI\\bomberHover");
+            Texture2D bomberPressed = Content.Load<Texture2D>("GUI\\pressedButton");
+            bomberButton = new Button(bomberNormal, bomberHover, bomberPressed, new Vector2(240, level.Height * 55));
+            bomberButton.Clicked += new EventHandler(bomberButton_Clicked);
+            
 
         }
 
@@ -257,12 +256,15 @@ namespace Game1
             if (Keyboard.GetState().IsKeyDown(Keys.P))
             {
                 CurrentGameState = GameState.Paused;
+                MediaPlayer.Volume = 0.05f;
             }
 
             if (Keyboard.GetState().IsKeyDown(Keys.M))
             {
                 CurrentGameState = GameState.MainMenu;
+                MediaPlayer.Pause();
             }
+            
 
 
             switch (CurrentGameState)
@@ -274,7 +276,8 @@ namespace Game1
                         LoadContent();
                         CurrentGameState = GameState.Play;
                         playMenu.isClicked = false;
-                        
+                        MediaPlayer.Play(song);
+                        MediaPlayer.Volume = 0.2f;
 
                     }
                     playMenu.Update(mouse);
@@ -296,6 +299,7 @@ namespace Game1
                     {
                         CurrentGameState = GameState.GameOver;
                         playMenu.isClicked = false;
+                        
 
                     }
 
@@ -303,9 +307,10 @@ namespace Game1
                     {
                         CurrentGameState = GameState.Won;
                         playMenu.isClicked = false;
+                        
                     }
 
-
+                    
                     waveManager.Update(gameTime);
 
                     player.Update(gameTime, waveManager.Enemies);
@@ -323,6 +328,7 @@ namespace Game1
                     {
 
                         CurrentGameState = GameState.Play;
+                        MediaPlayer.Volume = 0.2f;
 
                     }
                     pauseMenu.Update(mouse);
@@ -335,7 +341,7 @@ namespace Game1
                         LoadContent();
                         CurrentGameState = GameState.Play;
                         playMenu.isClicked = false;
-
+                        
 
                     }
                     playMenu.Update(mouse);
@@ -356,7 +362,7 @@ namespace Game1
                         LoadContent();
                         CurrentGameState = GameState.Play;
                         playMenu.isClicked = false;
-
+                        
 
                     }
                     playMenu.Update(mouse);
@@ -370,7 +376,7 @@ namespace Game1
                     exitMenu.Update(mouse);
                     break;
 
-
+                    
             }
 
             
