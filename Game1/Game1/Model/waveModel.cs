@@ -307,7 +307,7 @@ namespace Game1.Model
                     enemyAtEnd = true;
                     spawningEnemies = false;
                 }
-                if (player.Lives >= 1 && waveNumber == 1)
+                if (player.Lives >= 1 && waveNumber == 24)
                 {
                     enemies.Remove(enemy);
                     enemyAtEnd = true;

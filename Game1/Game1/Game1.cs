@@ -39,15 +39,26 @@ namespace Game1
 
         public static GameWindow WindowObject;
 
-        
+        enum GameState
+        {
+            MainMenu,
+            Play,
+            Exit
+        }
 
+        GameState CurrentGameState = GameState.MainMenu;
+
+        int screenWidth = 300;
+        int screenHeight = 300;
+
+        Menu pMenu;
         
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            //6graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
             
             graphics.PreferredBackBufferHeight = level.Height * 60;
             graphics.PreferredBackBufferWidth = level.Width * 60;
@@ -69,9 +80,9 @@ namespace Game1
         {
             // TODO: Add your initialization logic here
 
-            
 
-            
+
+
 
             Game1.WindowObject = Window;
             Mouse.WindowHandle = Window.Handle;
@@ -89,7 +100,11 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
+
+            pMenu = new Menu(Content.Load<Texture2D>("GUI\\playButton"), graphics.GraphicsDevice);
+            pMenu.setPosition(new Vector2(250, 350));
             
 
             Texture2D grass = Content.Load<Texture2D>("grass");
@@ -229,6 +244,9 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+
+            MouseState mouse = Mouse.GetState();
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
                 Exit();
@@ -237,6 +255,36 @@ namespace Game1
             {
                 using (var game = new Game1())
                     game.Run();
+            }
+
+            switch (CurrentGameState)
+            {
+                case GameState.MainMenu:
+                    if (pMenu.isClicked == true)
+                    {
+                        CurrentGameState = GameState.Play;
+                        pMenu.Update(mouse);
+
+                        
+
+
+                    }
+                    break;
+
+                case GameState.Play:
+
+
+                    waveManager.Update(gameTime);
+
+                    player.Update(gameTime, waveManager.Enemies);
+
+                    basicButton.Update(gameTime);
+                    speedButton.Update(gameTime);
+                    slowButton.Update(gameTime);
+                    bomberButton.Update(gameTime);
+                    rangeButton.Update(gameTime);
+
+                    break;
             }
 
 
@@ -270,15 +318,7 @@ namespace Game1
             //List<enemyModel> enemies = new List<enemyModel>();
             //enemies.Add(enemy1);
 
-            waveManager.Update(gameTime);
-
-            player.Update(gameTime, waveManager.Enemies);
-
-            basicButton.Update(gameTime);
-            speedButton.Update(gameTime);
-            slowButton.Update(gameTime);
-            bomberButton.Update(gameTime);
-            rangeButton.Update(gameTime);
+            
 
             base.Update(gameTime);
 
@@ -297,24 +337,39 @@ namespace Game1
 
             spriteBatch.Begin();
 
-            
+
+            switch (CurrentGameState)
+            {
+                case GameState.MainMenu:
+                    spriteBatch.Draw(Content.Load<Texture2D>("GUI\\MainMenu"), new Rectangle(0,0, screenWidth, screenHeight), Color.White);
+                    pMenu.Draw(spriteBatch);
+                    break;
+
+                case GameState.Play:
+
+                    level.Draw(spriteBatch);
+                    //enemy1.Draw(spriteBatch);
+
+                    waveManager.Draw(spriteBatch);
+
+                    player.Draw(spriteBatch);
+
+                    toolbar.Draw(spriteBatch, player, waveManager);
 
 
-            level.Draw(spriteBatch);
-            //enemy1.Draw(spriteBatch);
+                    basicButton.Draw(spriteBatch);
+                    speedButton.Draw(spriteBatch);
+                    slowButton.Draw(spriteBatch);
+                    bomberButton.Draw(spriteBatch);
+                    rangeButton.Draw(spriteBatch);
 
-            waveManager.Draw(spriteBatch);
 
-            player.Draw(spriteBatch);
+                    break;
+            }
 
-            toolbar.Draw(spriteBatch, player, waveManager);
-            
 
-            basicButton.Draw(spriteBatch);
-            speedButton.Draw(spriteBatch);
-            slowButton.Draw(spriteBatch);
-            bomberButton.Draw(spriteBatch);
-            rangeButton.Draw(spriteBatch);
+
+           
 
             spriteBatch.End();
 

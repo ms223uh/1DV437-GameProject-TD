@@ -83,7 +83,7 @@ namespace Game1.GUI
                 spriteBatch.DrawString(spriteFont, text, textPosition, Color.White);
             }
 
-            if (player.Lives >= 0)
+            if (player.Lives <= 0)
             {
                 
                 string text1 = string.Format("Game Over! \n Press ESC to exit or R to restart.");
@@ -91,7 +91,7 @@ namespace Game1.GUI
 
 
             }
-            if (player.Lives >= 1 && wave.WaveNumber == 1)
+            if (player.Lives >= 1 && wave.WaveNumber == 24)
             {
                 string text2 = string.Format("You Won! \n Press ESC to exit or R to restart.");
                 spriteBatch.DrawString(spriteFont, text2, textPosition, Color.White);
